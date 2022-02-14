@@ -33,10 +33,6 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public void KekTest()
-    {
-        Debug.Log("Kek");
-    }
 
     // Sounds. Called in Animations (except Jump)
     public void PlayActionSound(AudioClip sound)
