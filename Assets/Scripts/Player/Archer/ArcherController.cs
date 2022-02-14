@@ -16,6 +16,7 @@ public class ArcherController : MonoBehaviour
 
     private void Update()
     {
+        if (FindObjectOfType<PlayerManager>() == null) return;
         if (PlayerManager.instance.onPause || Time.timeScale != 1) return;
 
         Legs.PlayerMovement();
