@@ -19,9 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject panelSettings;
     private bool isPanelSettingsActive = false;
 
+    /*
     [Header("character portrait : warrior, archer, mage ")]
     [SerializeField] Sprite[] portraitObjects;
     [SerializeField] Image portraitImage;
+    */
 
 
     private void Start()
@@ -30,10 +32,12 @@ public class UIManager : MonoBehaviour
         buttonAgree.onClick.AddListener(HidePanelAccept);
         buttonCancel.onClick.AddListener(HidePanelAccept);
 
+        /*
         if (FindObjectOfType<PlayerManager>() != null)
         {
             portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
         }
+        */
     }
 
     private void Update()
