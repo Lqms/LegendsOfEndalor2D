@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    [SerializeField] GameObject[] UIObjects;
 
     [Header ("Accept panel")]
     public GameObject panelAccept;
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Settings panel")]
     [SerializeField] GameObject panelSettings;
+    private bool isPanelSettingsActive = false;
 
     private void Start()
     {
@@ -24,9 +26,30 @@ public class UIManager : MonoBehaviour
         buttonCancel.onClick.AddListener(HidePanelAccept);
     }
 
+    private void Update()
+    {
+        if (SceneHelper.instance.sceneIndex > 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings(); // Settings
+        }
+    }
+
+    private void TogglePanelSettings()
+    {
+        foreach (GameObject UIobj in UIObjects)
+        {
+            UIobj.SetActive(false);
+        }
+
+        if (isPanelSettingsActive) HidePanelSettings();
+        else ShowPanelSettings();
+    }
+
+
     // Settings panel
     public void ShowPanelSettings()
     {
+        isPanelSettingsActive = true;
         Time.timeScale = 0;
         panelSettings.SetActive(true);
         FindObjectOfType<CursorChangerScript>().isCursorAtcive = true;
@@ -34,6 +57,7 @@ public class UIManager : MonoBehaviour
 
     public void HidePanelSettings()
     {
+        isPanelSettingsActive = false;
         Time.timeScale = 1;
         panelSettings.SetActive(false);
         FindObjectOfType<CursorChangerScript>().isCursorAtcive = false;

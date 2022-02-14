@@ -1022,8 +1022,8 @@ RectTransform:
   m_Children:
   - {fileID: 1706400070}
   - {fileID: 188733926}
-  - {fileID: 7566121426880009321}
   - {fileID: 623196930}
+  - {fileID: 7566121426880009321}
   - {fileID: 500922882}
   - {fileID: 1186788787}
   m_Father: {fileID: 0}
@@ -2628,6 +2628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIObjects:
+  - {fileID: 500922886}
+  - {fileID: 6636827699145574507}
   panelAccept: {fileID: 500922886}
   textAccept: {fileID: 500922885}
   buttonAgree: {fileID: 500922884}
@@ -3382,7 +3385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531890832183335779, guid: 8c0fca8b4fedb0a4d97d285f280b4bea, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 531890832183335779, guid: 8c0fca8b4fedb0a4d97d285f280b4bea, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3821,8 +3824,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070dce45272a45e4a85b776f00cc222c, type: 3}
---- !u!224 &7566121426880009321 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 347929660073835552, guid: 070dce45272a45e4a85b776f00cc222c, type: 3}
+--- !u!4 &7566121426880009321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 7566121426880009320}
   m_PrefabAsset: {fileID: 0}
