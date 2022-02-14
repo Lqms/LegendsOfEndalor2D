@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         buttonAgree.onClick.AddListener(HidePanelAccept);
         buttonCancel.onClick.AddListener(HidePanelAccept);
 
-        Invoke("ChangePortrait", 1f);
+        Invoke("ChangePortrait", 1f); // need to be rework in start of scene where i have character
     }
 
     void ChangePortrait()
