@@ -54,8 +54,8 @@ public class SceneHelper : MonoBehaviour
     private void NewHint()
     {
         TextAsset data = Resources.Load("Loading hints") as TextAsset;
-        string hint = data.ToString();
-        Debug.Log(hint);
+        string[] hints = data.ToString().Split('|');
+        Debug.Log(hints[0]);
     }
 
     // Scenes Logic
