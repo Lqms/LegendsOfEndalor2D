@@ -15,7 +15,8 @@ public class SceneHelper : MonoBehaviour
     [Header("Panel Loading")]
     [SerializeField] GameObject panel;
     [SerializeField] Image image;
-    [SerializeField] Text text;
+    [SerializeField] Text textLoading;
+    [SerializeField] Text textHint;
     AsyncOperation asyncOperation;
 
 
@@ -43,7 +44,7 @@ public class SceneHelper : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             float progress = asyncOperation.progress / 0.9f;
-            text.text = "Loading: " + string.Format("{0:0}%", progress * 100f);
+            textLoading.text = "Loading: " + string.Format("{0:0}%", progress * 100f);
             image.fillAmount = progress;
             yield return 0;
         }
