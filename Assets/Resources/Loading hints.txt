@@ -1,4 +1,4 @@
-Cake is a lie
-Power attack knocks back enemies 
-If your health drops below zero, you die
-All actions consume energy. Think before you do anything, otherwise you won't even be able to quickly run away from danger
+Cake is a lie|
+Power attack knocks back enemies|
+If your health drops below zero, you die|
+All actions consume energy. Think before you do anything, otherwise you won't even be able to quickly run away from danger|

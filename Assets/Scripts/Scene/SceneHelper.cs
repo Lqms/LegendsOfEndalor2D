@@ -38,6 +38,7 @@ public class SceneHelper : MonoBehaviour
 
     private IEnumerator LoadSceneByNameCoroutine(string name)
     {
+        NewHint();
         panel.SetActive(true);
         yield return new WaitForSeconds(0.1f); //1f
         asyncOperation = SceneManager.LoadSceneAsync(name);
@@ -48,6 +49,13 @@ public class SceneHelper : MonoBehaviour
             image.fillAmount = progress;
             yield return 0;
         }
+    }
+
+    private void NewHint()
+    {
+        TextAsset data = Resources.Load("Loading hints") as TextAsset;
+        string hint = data.ToString();
+        Debug.Log(hint);
     }
 
     // Scenes Logic
