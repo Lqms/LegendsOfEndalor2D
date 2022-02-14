@@ -14,30 +14,26 @@ public class UIManager : MonoBehaviour
     public Button buttonAgree;
     [SerializeField] Button buttonCancel;
 
-
     [Header("Settings panel")]
     [SerializeField] GameObject panelSettings;
     private bool isPanelSettingsActive = false;
 
-    /*
     [Header("character portrait : warrior, archer, mage ")]
     [SerializeField] Sprite[] portraitObjects;
     [SerializeField] Image portraitImage;
-    */
-
-
+    
     private void Start()
     {
         instance = GetComponent<UIManager>();
         buttonAgree.onClick.AddListener(HidePanelAccept);
         buttonCancel.onClick.AddListener(HidePanelAccept);
 
-        /*
-        if (FindObjectOfType<PlayerManager>() != null)
-        {
-            portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
-        }
-        */
+        Invoke("ChangePortrait", 1f);
+    }
+
+    void ChangePortrait()
+    {
+        portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
     }
 
     private void Update()
