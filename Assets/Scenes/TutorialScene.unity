@@ -825,6 +825,11 @@ MonoBehaviour:
   buttonAgree: {fileID: 311523393}
   buttonCancel: {fileID: 311523392}
   panelSettings: {fileID: 867995429}
+  portraitObjects:
+  - {fileID: 21300000, guid: 19a7c414e85621c4b9437ee2f7204ba8, type: 3}
+  - {fileID: 21300000, guid: 58046631d8b75db4e84be03300dc4aad, type: 3}
+  - {fileID: 21300000, guid: 7cab96854064c5a44a4e2f753300aa98, type: 3}
+  portraitImage: {fileID: 2016601050}
 --- !u!114 &492968348 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6217022573887378172, guid: 9ba28e8b9f9f5e5498b0c3cfbbafbda2, type: 3}
@@ -3863,11 +3868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTestPrefab: {fileID: 1589481385969350307, guid: 1e651b00b13d1df46a288c9a4b33046c, type: 3}
-  portraitObjects:
-  - {fileID: 21300000, guid: 19a7c414e85621c4b9437ee2f7204ba8, type: 3}
-  - {fileID: 21300000, guid: 58046631d8b75db4e84be03300dc4aad, type: 3}
-  - {fileID: 21300000, guid: 7cab96854064c5a44a4e2f753300aa98, type: 3}
-  portraitImage: {fileID: 2016601050}
 --- !u!4 &2130839293
 Transform:
   m_ObjectHideFlags: 0
