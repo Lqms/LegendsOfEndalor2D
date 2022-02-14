@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject panelSettings;
     private bool isPanelSettingsActive = false;
 
+
     private void Start()
     {
         instance = GetComponent<UIManager>();

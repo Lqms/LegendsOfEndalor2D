@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum ClassOfPlayer
 {
     Warrior,
@@ -25,6 +26,7 @@ public class PlayerManager : MonoBehaviour
         instance = GetComponent<PlayerManager>();
         audioSource = GetComponent<AudioSource>();
         spawnPoint = GameObject.Find("SpawnPoint");
+
     }
 
     public void Respawn()
