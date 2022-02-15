@@ -10,7 +10,7 @@ public class DeathLineScript : MonoBehaviour
     {
         BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
         collider.isTrigger = true;
-        collider.size = new Vector2(500, 2);
+        collider.size = new Vector2(500, 10);
         collider.offset = new Vector2(0, colliderPosY);
         collider.enabled = true;
     }
