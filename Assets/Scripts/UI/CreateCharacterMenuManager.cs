@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class CreateCharacterMenuManager : MonoBehaviour
 {
-    [Header ("Background images and animators")]
+    [Header ("Background and class images")]
     [SerializeField] Sprite[] imagesBackground;
+    [SerializeField] Sprite[] imagesClass;
 
     [Header("Choose class UI Objects")]
     [SerializeField] Text textChooseClassName;
     [SerializeField] Text textChooseClassInfo;
+    [SerializeField] Image imageClass;
 
     private int index = 0;
     ClassOfPlayer className;
@@ -38,7 +40,13 @@ public class CreateCharacterMenuManager : MonoBehaviour
         }
 
         GetComponent<Image>().sprite = imagesBackground[index];
+        if (className == ClassOfPlayer.Warrior) GetComponent<Image>().transform.localScale = new Vector3(2, 2, 1);
+        else GetComponent<Image>().transform.localScale = new Vector3(1, 1, 1);
         GetComponent<Animator>().SetTrigger(className.ToString());
+
+        imageClass.sprite = imagesClass[index];
+        imageClass.GetComponent<Animator>().SetTrigger(className.ToString());
+
         textChooseClassName.text = className.ToString();
         textChooseClassName.color = color;
         textChooseClassInfo.text = GetClassInfo(index);
