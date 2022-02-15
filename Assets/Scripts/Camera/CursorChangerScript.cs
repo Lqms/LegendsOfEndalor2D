@@ -9,9 +9,12 @@ public class CursorChangerScript : MonoBehaviour
     public bool isCursorAtcive = false;
     public bool hideCursor = false;
     
-    void Awake() { Cursor.visible = false; }
+    void Awake() 
+    {
+        instance = GetComponent<CursorChangerScript>();
+        Cursor.visible = false; 
+    }
 
-    private void Start() { instance = GetComponent<CursorChangerScript>(); }
 
     void OnGUI()
     {
