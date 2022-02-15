@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Settings panel UI objects")]
     [SerializeField] GameObject panelSettings;
+    [SerializeField] Slider sliderSound;
     private bool isPanelSettingsActive = false;
 
     /*
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         instance = GetComponent<UIManager>();
         buttonAgree.onClick.AddListener(HidePanelAcceptChoose);
         buttonCancel.onClick.AddListener(HidePanelAcceptChoose);
+        sliderSound.value = AudioListener.volume;
 
         // Adding toggling UI objects in list
         UIObjects.Add(panelSettings);
@@ -48,6 +50,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // Settings panel
     private void TogglePanelSettings()
     {
         foreach (GameObject UIobj in UIObjects)
@@ -59,8 +62,6 @@ public class UIManager : MonoBehaviour
         else ShowPanelSettings();
     }
 
-
-    // Settings panel
     public void ShowPanelSettings()
     {
         Time.timeScale = 0;
@@ -77,6 +78,27 @@ public class UIManager : MonoBehaviour
 
         isPanelSettingsActive = false; 
         panelSettings.SetActive(false);    
+    }
+
+    public void SliderSoundOnChange()
+    {
+        AudioListener.volume = sliderSound.value;
+    }
+
+    public void BackToMainMenu()
+    {
+        Time.timeScale = 1;
+        panelSettings.SetActive(false);
+        if (SceneHelper.instance.sceneName != "MainMenuScene")
+        {
+            ShowPanelAcceptChoose(message: "Back to Main Menu?");
+            buttonAgree.onClick.AddListener(BackToMainMenuAccept);
+        }
+    }
+
+    void BackToMainMenuAccept()
+    {
+        SceneHelper.instance.LoadSceneByName("MainMenuScene");
     }
 
 
