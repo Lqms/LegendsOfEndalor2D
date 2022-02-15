@@ -18,7 +18,7 @@ public class PlayerChooseClassManager : MonoBehaviour
 
     void Update()
     {
-        if (FindObjectOfType<SceneHelper>().sceneName == "MainMenuScene") Destroy(gameObject);
+        if (SceneHelper.instance.sceneName == "MainMenuScene") Destroy(gameObject);
     }
 
     public void ChooseClassWarrior() {
