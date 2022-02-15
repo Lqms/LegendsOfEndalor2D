@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+
+    /// <summary>
+    /// Accept panel wrapper, settings panel wrapper
+    /// </summary>
     [SerializeField] GameObject[] UIObjects;
 
     [Header ("Accept panel")]
@@ -28,7 +32,7 @@ public class UIManager : MonoBehaviour
         buttonAgree.onClick.AddListener(HidePanelAccept);
         buttonCancel.onClick.AddListener(HidePanelAccept);
 
-        //Invoke("ChangePortrait", 1f); // need to be rework in start of scene where i have character
+        //Invoke("ChangePortrait", 1f);
     }
 
     void ChangePortrait()
