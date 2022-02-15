@@ -15,7 +15,7 @@ public class MainCameraFollowPlayer : MonoBehaviour
     void Start()
     {
         mainCamera = gameObject.GetComponent<Camera>();
-        Invoke("FindPlayer", 0.5f);
+        //Invoke("FindPlayer", 0.5f);
     }
 
     void Update()

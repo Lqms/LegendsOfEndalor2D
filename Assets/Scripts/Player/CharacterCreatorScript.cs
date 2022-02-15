@@ -9,23 +9,35 @@ public class CharacterCreatorScript : MonoBehaviour
     public ClassOfPlayer choosenClassName;
     private bool characterCreated = false;
 
-    private void Awake() { DontDestroyOnLoad(gameObject); }
+    private void Awake() {
+        print("Awake");
+        DontDestroyOnLoad(gameObject); 
+    }
+
     private void Update() 
     {
-        if (SceneHelper.instance.sceneIndex < 2) Destroy(gameObject);
-        if (SceneHelper.instance.sceneIndex == 3) CreateCharacter();
+        if (SceneHelper.instance.sceneIndex < 2)
+        {
+            print("<2");
+            Destroy(gameObject);
+        }
+        if (SceneHelper.instance.sceneIndex == 3)
+        {
+            print("==3");
+            CreateCharacter();
+        }
     }
 
     private void CreateCharacter()
     {
         if (!characterCreated)
         {
-            Debug.Log("Create");
+            Debug.Log("Created");
             characterCreated = true;
             GameObject playerObj = Instantiate(characterPrefabs[(int)choosenClassName]);
             playerObj.GetComponent<PlayerManager>().className = choosenClassName;
             playerObj.GetComponent<PlayerManager>().Respawn();
-            Destroy(gameObject);
+            Destroy(gameObject, 1f);
         }
     }
 
