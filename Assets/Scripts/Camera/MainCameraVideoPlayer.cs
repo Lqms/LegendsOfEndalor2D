@@ -23,9 +23,8 @@ public class MainCameraVideoPlayer : MonoBehaviour
 
 	public void PlayNewVideo(string videoUrl)
     {
-		Cursor.visible = false;
+		CursorChangerScript.instance.hideCursor = true;
 		videoSkipped = false;
-
 		videoPlayer = gameObject.AddComponent<VideoPlayer>();
 		videoPlayer.playOnAwake = false;
 		videoPlayer.loopPointReached += OnReach;
@@ -43,7 +42,7 @@ public class MainCameraVideoPlayer : MonoBehaviour
     {
 		if (!videoSkipped)
 		{
-			Cursor.visible = true;
+			CursorChangerScript.instance.hideCursor = false;
 			videoSkipped = true;
 			Destroy(videoPlayer);
 			Debug.Log("Video Skipped: " + videoSkipped.ToString());
