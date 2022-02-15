@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public Button buttonAgree;
     [SerializeField] Button buttonCancel;
 
-    [Header("Settings panel")]
+    [Header("Settings panel UI objects")]
     [SerializeField] GameObject panelSettings;
     private bool isPanelSettingsActive = false;
 

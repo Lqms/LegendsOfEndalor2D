@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     AudioSource audioSrc;
+
+    [Header ("UI sounds")]
     [SerializeField] AudioClip buttonClickSound;
     [SerializeField] AudioClip buttonNewGameSound;
 
