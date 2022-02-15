@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41113a34e51ed0642b9090fff335bea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introVideoName: Intro
+  introVideoName: Test
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -464,6 +464,8 @@ MonoBehaviour:
   buttonAgree: {fileID: 1025043387}
   buttonCancel: {fileID: 1307153551}
   panelSettings: {fileID: 0}
+  portraitObjects: []
+  portraitImage: {fileID: 0}
 --- !u!4 &1058354085
 Transform:
   m_ObjectHideFlags: 0
