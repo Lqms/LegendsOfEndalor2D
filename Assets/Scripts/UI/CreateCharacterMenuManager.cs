@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CreateCharacterMenuManager : MonoBehaviour
 {
+    ClassOfPlayer className;
+    private int index = 0;
+    
     [Header ("Background and class images")]
     [SerializeField] Sprite[] imagesBackground;
     [SerializeField] Sprite[] imagesClass;
@@ -13,13 +16,9 @@ public class CreateCharacterMenuManager : MonoBehaviour
     [SerializeField] Text textChooseClassName;
     [SerializeField] Text textChooseClassInfo;
     [SerializeField] Image imageClass;
-
-    private int index = 0;
-
-    ClassOfPlayer className;
     Color textClassNameColor;
-    float scaleX;
-    float scaleY;
+    float imageScaleX;
+    float imageScaleY;
 
     public void ButtonChooseClassNextOnClick()
     {
@@ -31,20 +30,20 @@ public class CreateCharacterMenuManager : MonoBehaviour
             case 0:
                 className = ClassOfPlayer.Warrior;
                 textClassNameColor = new Color(1, 0, 0);
-                scaleX = 1; // 1024
-                scaleY = 1; // 512
+                imageScaleX = 1; // 1024
+                imageScaleY = 1; // 512
                 break;
             case 1:
                 className = ClassOfPlayer.Archer;
                 textClassNameColor = new Color(0, 1, 0);
-                scaleX = 0.3f; //340
-                scaleY = 0.6f; // 512
+                imageScaleX = 0.3f; //340
+                imageScaleY = 0.6f; // 512
                 break;
             case 2:
                 className = ClassOfPlayer.Mage;
                 textClassNameColor = new Color(0, 0, 1);
-                scaleX = 0.3f; //340
-                scaleY = 0.6f; // 512
+                imageScaleX = 0.3f; //340
+                imageScaleY = 0.6f; // 512
                 break;
         }
 
@@ -53,7 +52,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
         imageClass.sprite = imagesClass[index];
         imageClass.GetComponent<Animator>().SetTrigger(className.ToString());
-        imageClass.transform.localScale = new Vector2(scaleX, scaleY);
+        imageClass.transform.localScale = new Vector2(imageScaleX, imageScaleY);
 
         textChooseClassName.text = className.ToString();
         textChooseClassName.color = textClassNameColor;
