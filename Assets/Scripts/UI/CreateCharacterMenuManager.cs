@@ -40,7 +40,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
         GetComponent<Image>().sprite = imagesBackground[index];
         GetComponent<Animator>().SetTrigger(className.ToString());
         textChooseClassName.text = className.ToString();
-        textChooseClassInfo.color = color;
+        textChooseClassName.color = color;
         textChooseClassInfo.text = GetClassInfo(index);
 
     }
