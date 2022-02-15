@@ -18,8 +18,8 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
     ClassOfPlayer className;
     Color textClassNameColor;
-    int imageWidth;
-    int imageHeight;
+    float scaleX;
+    float scaleY;
 
     public void ButtonChooseClassNextOnClick()
     {
@@ -31,20 +31,20 @@ public class CreateCharacterMenuManager : MonoBehaviour
             case 0:
                 className = ClassOfPlayer.Warrior;
                 textClassNameColor = new Color(1, 0, 0);
-                imageWidth = 1024;
-                imageHeight = 512;
+                scaleX = 1; // 1024
+                scaleY = 1; // 512
                 break;
             case 1:
                 className = ClassOfPlayer.Archer;
                 textClassNameColor = new Color(0, 1, 0);
-                imageWidth = 340;
-                imageHeight = 340;
+                scaleX = 0.3f; //340
+                scaleY = 0.6f; // 512
                 break;
             case 2:
                 className = ClassOfPlayer.Mage;
                 textClassNameColor = new Color(0, 0, 1);
-                imageWidth = 340;
-                imageHeight = 340;
+                scaleX = 0.3f; //340
+                scaleY = 0.6f; // 512
                 break;
         }
 
@@ -53,7 +53,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
         imageClass.sprite = imagesClass[index];
         imageClass.GetComponent<Animator>().SetTrigger(className.ToString());
-        imageClass.sprite.texture.Resize(512, 256);
+        imageClass.transform.localScale = new Vector2(scaleX, scaleY);
 
         textChooseClassName.text = className.ToString();
         textChooseClassName.color = textClassNameColor;
