@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class CreateCharacterMenuManager : MonoBehaviour
 {
-
     [Header ("Background images")]
-    [SerializeField] GameObject[] imagesBackground;
+    [SerializeField] Sprite[] imagesBackground;
 
     [Header("Choose class UI Objects")]
     [SerializeField] GameObject panelChooseClass;
@@ -15,11 +14,28 @@ public class CreateCharacterMenuManager : MonoBehaviour
     [SerializeField] Text textChooseClassInfo;
 
     private int index = 0;
+    ClassOfPlayer className;
 
     public void ButtonChooseClassNextOnClick()
     {
         index++;
-        if (index >= imagesBackground.Length) index = 0;
+        if (index >= (int)ClassOfPlayer.COUNT) index = 0;
+
+        switch (index)
+        {
+            case 0:
+                className = ClassOfPlayer.Warrior;
+                break;
+            case 1:
+                className = ClassOfPlayer.Archer;
+                break;
+            case 2:
+                className = ClassOfPlayer.Mage;
+                break;
+        }
+
+        panelChooseClass.GetComponent<Image>().sprite = imagesBackground[index];
+        textChooseClassName.text = className.ToString();
     }
 
     public void AcceptButtonOnClick()
