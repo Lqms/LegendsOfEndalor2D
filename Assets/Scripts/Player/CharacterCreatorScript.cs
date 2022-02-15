@@ -13,7 +13,7 @@ public class CharacterCreatorScript : MonoBehaviour
     private void Update() 
     {
         if (SceneHelper.instance.sceneIndex < 2) Destroy(gameObject);
-        if (SceneHelper.instance.sceneIndex == 2) CreateCharacter();
+        if (SceneHelper.instance.sceneIndex == 3) CreateCharacter();
     }
 
     private void CreateCharacter()

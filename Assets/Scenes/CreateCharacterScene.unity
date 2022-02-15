@@ -1858,6 +1858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998044234}
+  - component: {fileID: 1998044235}
   m_Layer: 0
   m_Name: CharacterCreator
   m_TagString: Untagged
@@ -1879,6 +1880,23 @@ Transform:
   m_Father: {fileID: 1210432694}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1998044235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998044233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c5dee6b6a12ad45987f85286550af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPrefabs:
+  - {fileID: 1589481385969350307, guid: 1e651b00b13d1df46a288c9a4b33046c, type: 3}
+  - {fileID: 1557078049490084553, guid: 362d6ee34223fcc4f9b29ba5aa1a9de4, type: 3}
+  - {fileID: 5301568611522307808, guid: 88f70fb6f9a6de241b6b339ead7b06a5, type: 3}
+  choosenClassName: 0
 --- !u!1 &2123292448
 GameObject:
   m_ObjectHideFlags: 0
