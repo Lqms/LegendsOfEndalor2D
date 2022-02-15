@@ -19,12 +19,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider sliderSettingsSound;
     private bool isPanelSettingsActive = false;
 
-    /*
-    [Header("character portrait : warrior, archer, mage ")]
+    [Header("character portrait and info: warrior, archer, mage ")]
     [SerializeField] Sprite[] portraitObjects;
     [SerializeField] Image portraitImage;
-    */
-    
+
     private void Start()
     {
         instance = GetComponent<UIManager>();
@@ -38,12 +36,15 @@ public class UIManager : MonoBehaviour
             UIObjects.Add(panelSettings);
         }
 
-        UIObjects.Add(panelAcceptChoose); 
-    }
+        if (panelAcceptChoose != null)
+        {
+            UIObjects.Add(panelAcceptChoose);
+        }
 
-    void ChangePortrait()
-    {
-        //portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
+        if (portraitImage != null)
+        {
+            Invoke("ChangePortrait", 0.1f);
+        }
     }
 
     private void Update()
@@ -127,4 +128,10 @@ public class UIManager : MonoBehaviour
         panelAcceptChoose.SetActive(false);
     }
 
+
+    // Panel character info
+    void ChangePortrait()
+    {
+        portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
+    }
 }
