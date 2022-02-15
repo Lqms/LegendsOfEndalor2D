@@ -15,8 +15,11 @@ public class CreateCharacterMenuManager : MonoBehaviour
     [SerializeField] Image imageClass;
 
     private int index = 0;
+
     ClassOfPlayer className;
-    Color color;
+    Color textClassNameColor;
+    int imageWidth;
+    int imageHeight;
 
     public void ButtonChooseClassNextOnClick()
     {
@@ -27,28 +30,33 @@ public class CreateCharacterMenuManager : MonoBehaviour
         {          
             case 0:
                 className = ClassOfPlayer.Warrior;
-                color = new Color(1, 0, 0);
+                textClassNameColor = new Color(1, 0, 0);
+                imageWidth = 1024;
+                imageHeight = 512;
                 break;
             case 1:
                 className = ClassOfPlayer.Archer;
-                color = new Color(0, 1, 0);
+                textClassNameColor = new Color(0, 1, 0);
+                imageWidth = 340;
+                imageHeight = 340;
                 break;
             case 2:
                 className = ClassOfPlayer.Mage;
-                color = new Color(0, 0, 1);
+                textClassNameColor = new Color(0, 0, 1);
+                imageWidth = 340;
+                imageHeight = 340;
                 break;
         }
 
         GetComponent<Image>().sprite = imagesBackground[index];
-        if (className == ClassOfPlayer.Warrior) GetComponent<Image>().transform.localScale = new Vector3(2, 2, 1);
-        else GetComponent<Image>().transform.localScale = new Vector3(1, 1, 1);
         GetComponent<Animator>().SetTrigger(className.ToString());
 
         imageClass.sprite = imagesClass[index];
         imageClass.GetComponent<Animator>().SetTrigger(className.ToString());
+        imageClass.sprite.texture.Resize(512, 256);
 
         textChooseClassName.text = className.ToString();
-        textChooseClassName.color = color;
+        textChooseClassName.color = textClassNameColor;
         textChooseClassInfo.text = GetClassInfo(index);
 
     }
