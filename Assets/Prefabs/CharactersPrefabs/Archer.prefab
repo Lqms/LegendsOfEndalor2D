@@ -69,7 +69,6 @@ GameObject:
   - component: {fileID: 1557078049490084550}
   - component: {fileID: 1557078049490084551}
   - component: {fileID: 3646130264545640188}
-  - component: {fileID: -158426114581934281}
   - component: {fileID: 2348505414301116}
   m_Layer: 0
   m_Name: Archer
@@ -239,14 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc7ab5d23c398d47b09b4366c94d6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &-158426114581934281
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1557078049490084553}
-  m_Enabled: 1
 --- !u!82 &2348505414301116
 AudioSource:
   m_ObjectHideFlags: 0

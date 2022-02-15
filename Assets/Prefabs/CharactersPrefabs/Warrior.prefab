@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1589481385969350316}
   - component: {fileID: 1589481385969350317}
   - component: {fileID: 2769215143744000742}
-  - component: {fileID: 822655735569372367}
   - component: {fileID: 4243868158394034849}
   m_Layer: 0
   m_Name: Warrior
@@ -187,14 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageDealSpot: {fileID: 2304465881453685164}
---- !u!81 &822655735569372367
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589481385969350307}
-  m_Enabled: 1
 --- !u!82 &4243868158394034849
 AudioSource:
   m_ObjectHideFlags: 0

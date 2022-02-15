@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5301568611522307823}
   - component: {fileID: 5301568611522307822}
   - component: {fileID: 7228887366666211570}
-  - component: {fileID: -7734317703908078773}
   - component: {fileID: 8947646601145093212}
   m_Layer: 0
   m_Name: Mage
@@ -185,14 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c09c42b44b27b448b783cec5483103c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &-7734317703908078773
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5301568611522307808}
-  m_Enabled: 1
 --- !u!82 &8947646601145093212
 AudioSource:
   m_ObjectHideFlags: 0

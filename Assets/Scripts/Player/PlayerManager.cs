@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     public ClassOfPlayer className;
     public bool onPause;
 
-    GameObject spawnPoint;
+    public GameObject spawnPoint;
     AudioSource audioSource;
 
     private void Start()
