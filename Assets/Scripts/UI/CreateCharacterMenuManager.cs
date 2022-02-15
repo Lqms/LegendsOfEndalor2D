@@ -9,7 +9,6 @@ public class CreateCharacterMenuManager : MonoBehaviour
     [SerializeField] Sprite[] imagesBackground;
 
     [Header("Choose class UI Objects")]
-    [SerializeField] GameObject panelChooseClass;
     [SerializeField] Text textChooseClassName;
     [SerializeField] Text textChooseClassInfo;
 
@@ -35,8 +34,8 @@ public class CreateCharacterMenuManager : MonoBehaviour
                 break;
         }
 
-        panelChooseClass.GetComponent<Image>().sprite = imagesBackground[index];
-        panelChooseClass.GetComponent<Animator>().SetTrigger(className.ToString());
+        GetComponent<Image>().sprite = imagesBackground[index];
+        GetComponent<Animator>().SetTrigger(className.ToString());
         textChooseClassName.text = className.ToString();
         textChooseClassInfo.text = GetClassInfo(index);
 
