@@ -6,11 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
-    /// <summary>
-    /// Accept panel wrapper, settings panel wrapper
-    /// </summary>
-    [SerializeField] GameObject[] UIObjects;
+    List<GameObject> UIObjects;
 
     [Header ("Accept panel")]
     public GameObject panelAccept;
@@ -22,9 +18,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject panelSettings;
     private bool isPanelSettingsActive = false;
 
+    /*
     [Header("character portrait : warrior, archer, mage ")]
     [SerializeField] Sprite[] portraitObjects;
     [SerializeField] Image portraitImage;
+    */
     
     private void Start()
     {
@@ -32,12 +30,14 @@ public class UIManager : MonoBehaviour
         buttonAgree.onClick.AddListener(HidePanelAccept);
         buttonCancel.onClick.AddListener(HidePanelAccept);
 
-        //Invoke("ChangePortrait", 1f);
+        // Adding toggling UI objects in list
+        UIObjects.Add(panelSettings);
+        UIObjects.Add(panelAccept);
     }
 
     void ChangePortrait()
     {
-        portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
+        //portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
     }
 
     private void Update()
