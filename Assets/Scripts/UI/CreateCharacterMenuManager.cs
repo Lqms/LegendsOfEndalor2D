@@ -14,6 +14,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
     private int index = 0;
     ClassOfPlayer className;
+    Color color;
 
     public void ButtonChooseClassNextOnClick()
     {
@@ -21,22 +22,25 @@ public class CreateCharacterMenuManager : MonoBehaviour
         if (index >= (int)ClassOfPlayer.COUNT) index = 0;
 
         switch (index)
-        {
+        {          
             case 0:
                 className = ClassOfPlayer.Warrior;
-
+                color = new Color(1, 0, 0);
                 break;
             case 1:
                 className = ClassOfPlayer.Archer;
+                color = new Color(0, 1, 0);
                 break;
             case 2:
                 className = ClassOfPlayer.Mage;
+                color = new Color(0, 0, 1);
                 break;
         }
 
         GetComponent<Image>().sprite = imagesBackground[index];
         GetComponent<Animator>().SetTrigger(className.ToString());
         textChooseClassName.text = className.ToString();
+        textChooseClassInfo.color = color;
         textChooseClassInfo.text = GetClassInfo(index);
 
     }
