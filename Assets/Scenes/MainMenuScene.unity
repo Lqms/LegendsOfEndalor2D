@@ -2343,12 +2343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 768804671}
-  text: {fileID: 768804670}
-  buttonAgree: {fileID: 768804669}
-  buttonCancel: {fileID: 790012419}
+  panelAcceptChoose: {fileID: 768804671}
+  textAcceptChoose: {fileID: 768804670}
+  buttonAcceptChooseAgree: {fileID: 768804669}
+  buttonAcceptChooseCancel: {fileID: 790012419}
   panelSettings: {fileID: 1980664718482122160}
-  sliderSound: {fileID: 1980664718482122159}
+  sliderSettingsSound: {fileID: 1980664718482122159}
 --- !u!4 &2114841831
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
     public void AcceptButtonOnClick()
     {
         UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {classNames[index]}");
-        UIManager.instance.buttonAgree.onClick.AddListener(StartGame);
+        UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(StartGame);
     }
 
     public void StartGame()

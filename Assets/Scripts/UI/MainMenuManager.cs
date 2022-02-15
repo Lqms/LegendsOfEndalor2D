@@ -21,7 +21,7 @@ public class MainMenuManager : MonoBehaviour
     public void NewGame()
     {
         UIManager.instance.ShowPanelAcceptChoose(message: "Start a new game?");
-        UIManager.instance.buttonAgree.onClick.AddListener(NewGameAccept);
+        UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(NewGameAccept);
     }
 
     void NewGameAccept()
@@ -45,7 +45,7 @@ public class MainMenuManager : MonoBehaviour
     public void Exit()
     {
         UIManager.instance.ShowPanelAcceptChoose(message: "Exit game?");
-        UIManager.instance.buttonAgree.onClick.AddListener(ExitAccept);
+        UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(ExitAccept);
     }
 
     void ExitAccept()

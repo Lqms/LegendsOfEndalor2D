@@ -9,14 +9,14 @@ public class UIManager : MonoBehaviour
     List<GameObject> UIObjects;
 
     [Header ("Accept choose UI objects")]
-    public GameObject panel;
-    [SerializeField] Text text;
-    public Button buttonAgree;
-    [SerializeField] Button buttonCancel;
+    public GameObject panelAcceptChoose;
+    [SerializeField] Text textAcceptChoose;
+    public Button buttonAcceptChooseAgree;
+    [SerializeField] Button buttonAcceptChooseCancel;
 
     [Header("Settings panel UI objects")]
     [SerializeField] GameObject panelSettings;
-    [SerializeField] Slider sliderSound;
+    [SerializeField] Slider sliderSettingsSound;
     private bool isPanelSettingsActive = false;
 
     /*
@@ -28,13 +28,13 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         instance = GetComponent<UIManager>();
-        buttonAgree.onClick.AddListener(HidePanelAcceptChoose);
-        buttonCancel.onClick.AddListener(HidePanelAcceptChoose);
-        sliderSound.value = AudioListener.volume;
+        buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
+        buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
+        sliderSettingsSound.value = AudioListener.volume;
 
         // Adding toggling UI objects in list
         UIObjects.Add(panelSettings);
-        UIObjects.Add(panel);
+        UIObjects.Add(panelAcceptChoose);
     }
 
     void ChangePortrait()
@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
 
     public void SliderSoundOnChange()
     {
-        AudioListener.volume = sliderSound.value;
+        AudioListener.volume = sliderSettingsSound.value;
     }
 
     public void BackToMainMenu()
@@ -92,7 +92,7 @@ public class UIManager : MonoBehaviour
         if (SceneHelper.instance.sceneName != "MainMenuScene")
         {
             ShowPanelAcceptChoose(message: "Back to Main Menu?");
-            buttonAgree.onClick.AddListener(BackToMainMenuAccept);
+            buttonAcceptChooseAgree.onClick.AddListener(BackToMainMenuAccept);
         }
     }
 
@@ -108,8 +108,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         CursorChangerScript.instance.isCursorAtcive = true;
 
-        text.text = message;
-        panel.SetActive(true);
+        textAcceptChoose.text = message;
+        panelAcceptChoose.SetActive(true);
     }
 
     public void HidePanelAcceptChoose()
@@ -117,10 +117,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         CursorChangerScript.instance.isCursorAtcive = false;
 
-        buttonAgree.onClick.RemoveAllListeners();
-        buttonAgree.onClick.AddListener(SoundManager.instance.ButtonSoundPlay);
-        buttonAgree.onClick.AddListener(HidePanelAcceptChoose);
-        panel.SetActive(false);
+        buttonAcceptChooseAgree.onClick.RemoveAllListeners();
+        buttonAcceptChooseAgree.onClick.AddListener(SoundManager.instance.ButtonSoundPlay);
+        buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
+        panelAcceptChoose.SetActive(false);
     }
 
 }
