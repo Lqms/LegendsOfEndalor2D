@@ -1,30 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacterCreatorScript : MonoBehaviour
 {
-    PlayerChooseClassManager playerChooseClassManager;
+    [Header("Character create: warrior, archer, mage")]
+    [SerializeField] GameObject[] characterPrefabs;
+    public ClassOfPlayer choosenClassName;
+    private bool characterCreated = false;
 
-    [Header ("For tests")]
-    [SerializeField] GameObject playerTestPrefab;
-
-
-
-    void Start()
+    private void Awake() { DontDestroyOnLoad(gameObject); }
+    private void Update() 
     {
-        playerChooseClassManager = FindObjectOfType<PlayerChooseClassManager>();
+        if (SceneHelper.instance.sceneIndex < 2) Destroy(gameObject);
+        if (SceneHelper.instance.sceneIndex == 2) CreateCharacter();
+    }
 
-        if (playerChooseClassManager != null)
+    private void CreateCharacter()
+    {
+        if (!characterCreated)
         {
-            GameObject player = Instantiate(playerChooseClassManager.playerObject, transform.position, Quaternion.identity);
-            player.GetComponent<PlayerManager>().className = playerChooseClassManager.playerClass;
-            Destroy(playerChooseClassManager.gameObject, 0.5f);
+            characterCreated = true;
+            GameObject playerObj = Instantiate(characterPrefabs[(int)choosenClassName]);
+            playerObj.GetComponent<PlayerManager>().className = choosenClassName;
+            playerObj.GetComponent<PlayerManager>().Respawn();
+            Destroy(gameObject);
         }
-        else Instantiate(playerTestPrefab, transform.position, Quaternion.identity);
-
-        Destroy(gameObject, 0.5f);
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CreateCharacterMenuManager : MonoBehaviour
 {
-    ClassOfPlayer className;
+    public ClassOfPlayer choosenClassName;
     private int index = 0;
     
     [Header ("Background and class images")]
@@ -16,9 +16,10 @@ public class CreateCharacterMenuManager : MonoBehaviour
     [SerializeField] Text textChooseClassName;
     [SerializeField] Text textChooseClassInfo;
     [SerializeField] Image imageClass;
-    Color textClassNameColor;
-    float imageScaleX;
-    float imageScaleY;
+    private Color textClassNameColor;
+    private float imageScaleX;
+    private float imageScaleY;
+
 
     public void ButtonChooseClassNextOnClick()
     {
@@ -28,36 +29,38 @@ public class CreateCharacterMenuManager : MonoBehaviour
         switch (index)
         {          
             case 0:
-                className = ClassOfPlayer.Warrior;
+                choosenClassName = ClassOfPlayer.Warrior;
                 textClassNameColor = new Color(1, 0, 0);
                 imageScaleX = 1; // 1024
                 imageScaleY = 1; // 512
                 break;
             case 1:
-                className = ClassOfPlayer.Archer;
+                choosenClassName = ClassOfPlayer.Archer;
                 textClassNameColor = new Color(0, 1, 0);
                 imageScaleX = 0.3f; //340
                 imageScaleY = 0.6f; // 512
                 break;
             case 2:
-                className = ClassOfPlayer.Mage;
+                choosenClassName = ClassOfPlayer.Mage;
                 textClassNameColor = new Color(0, 0, 1);
                 imageScaleX = 0.3f; //340
                 imageScaleY = 0.6f; // 512
                 break;
         }
 
+        // BG image and anim
         GetComponent<Image>().sprite = imagesBackground[index];
-        GetComponent<Animator>().SetTrigger(className.ToString());
+        GetComponent<Animator>().SetTrigger(choosenClassName.ToString());
 
+        // Class image, animn and scale
         imageClass.sprite = imagesClass[index];
-        imageClass.GetComponent<Animator>().SetTrigger(className.ToString());
+        imageClass.GetComponent<Animator>().SetTrigger(choosenClassName.ToString());
         imageClass.transform.localScale = new Vector2(imageScaleX, imageScaleY);
 
-        textChooseClassName.text = className.ToString();
+        // texts
+        textChooseClassName.text = choosenClassName.ToString();
         textChooseClassName.color = textClassNameColor;
         textChooseClassInfo.text = GetClassInfo(index);
-
     }
 
     private string GetClassInfo(int index)
@@ -69,8 +72,9 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
     public void ChooseButtonOnClick()
     {
-        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {className}");
+        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {choosenClassName}");
         UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(StartGame);
+        FindObjectOfType<CharacterCreatorScript>().choosenClassName = choosenClassName;
     }
 
     public void StartGame()
