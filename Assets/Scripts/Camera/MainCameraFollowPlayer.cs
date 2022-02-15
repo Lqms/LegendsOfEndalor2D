@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class MainCameraFollowPlayer : MonoBehaviour
 {
-    [SerializeField] PlayerManager target; 
-    Vector3 offset; 
-    Camera cam;
-    float zoomValue;
+    [Header("Camera settings")]
+    [SerializeField] float maxZoomValue = 4;
+    [SerializeField] float minZoomValue = 2;
+    [SerializeField] PlayerManager target;
+    private Camera mainCamera;
+    private Vector3 offset;
+    private float zoomValue;
 
     void Start()
     {
-        cam = gameObject.GetComponent<Camera>();
+        mainCamera = gameObject.GetComponent<Camera>();
         Invoke("FindPlayer", 0.5f);
     }
 
@@ -21,8 +24,8 @@ public class MainCameraFollowPlayer : MonoBehaviour
         {
             print("Zoomed!");
             zoomValue = Input.GetAxis("Mouse ScrollWheel");
-            if (zoomValue > 0 && cam.orthographicSize > 2) cam.orthographicSize -= 1;
-            else if (zoomValue < 0 && cam.orthographicSize < 4) cam.orthographicSize += 1;
+            if (zoomValue > 0 && mainCamera.orthographicSize > minZoomValue) mainCamera.orthographicSize -= 1;
+            else if (zoomValue < 0 && mainCamera.orthographicSize < maxZoomValue) mainCamera.orthographicSize += 1;
         }
 
         if (target != null) transform.position = target.transform.position + offset;
