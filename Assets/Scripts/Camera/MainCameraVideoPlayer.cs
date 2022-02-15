@@ -3,10 +3,12 @@ using UnityEngine.Video;
 
 public class MainCameraVideoPlayer : MonoBehaviour
 {
+	public static MainCameraVideoPlayer instance;
 	VideoPlayer videoPlayer;
 	[SerializeField] string introVideoName;
 
 	public bool videoSkipped { get; private set; }
+
     MainCameraVideoPlayer()
     {
 		videoSkipped = false;
@@ -14,17 +16,10 @@ public class MainCameraVideoPlayer : MonoBehaviour
 
     void Start()
     {
+		instance = GetComponent<MainCameraVideoPlayer>();
 		if (introVideoName != null) PlayNewVideo(introVideoName);
 	}
 
-	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.instance.panelAccept.activeInHierarchy)
-		{
-			UIManager.instance.ShowPanelAccept(message: "Skip Intro?");
-			UIManager.instance.buttonAgree.onClick.AddListener(SkipVideo);
-		}
-	}
 
 	public void PlayNewVideo(string videoUrl)
     {

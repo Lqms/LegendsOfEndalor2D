@@ -29,6 +29,7 @@ public class SceneHelper : MonoBehaviour
         sceneIsLoading = false;
     }
 
+    // Load scene and show panel loading
     public void LoadSceneByName(string name)
     {
         if (sceneIsLoading) return;
@@ -40,7 +41,7 @@ public class SceneHelper : MonoBehaviour
     {
         NewHint();
         panel.SetActive(true);
-        yield return new WaitForSeconds(0.1f); //1f
+        yield return new WaitForSeconds(1f);
         asyncOperation = SceneManager.LoadSceneAsync(name);
         while (!asyncOperation.isDone)
         {
@@ -63,6 +64,7 @@ public class SceneHelper : MonoBehaviour
     private void Update()
     {
         IntroScene();
+        MainMenuScene();
     }
 
     /// <summary>
@@ -71,7 +73,18 @@ public class SceneHelper : MonoBehaviour
     private void IntroScene()
     {
         if (sceneName != "IntroVideoScene") return;
-        if (FindObjectOfType<MainCameraVideoPlayer>().videoSkipped) LoadSceneByName("MainMenuScene");
+        if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.instance.panelAccept.activeInHierarchy)
+        {
+            UIManager.instance.ShowPanelAccept(message: "Skip Intro?");
+            UIManager.instance.buttonAgree.onClick.AddListener(SkipIntroScene);
+        }
+        if (MainCameraVideoPlayer.instance.videoSkipped) LoadSceneByName("MainMenuScene");
+    }
+
+    private void SkipIntroScene()
+    {
+        MainCameraVideoPlayer.instance.SkipVideo();
+        LoadSceneByName("MainMenuScene");
     }
 
     /// <summary>
