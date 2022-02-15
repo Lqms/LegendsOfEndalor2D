@@ -20,6 +20,7 @@ public class CharacterCreatorScript : MonoBehaviour
     {
         if (!characterCreated)
         {
+            Debug.Log("Create");
             characterCreated = true;
             GameObject playerObj = Instantiate(characterPrefabs[(int)choosenClassName]);
             playerObj.GetComponent<PlayerManager>().className = choosenClassName;
