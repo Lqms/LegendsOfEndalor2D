@@ -463,11 +463,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 996377358}
-  text: {fileID: 1246794036}
-  buttonAgree: {fileID: 1025043387}
-  buttonCancel: {fileID: 1307153551}
-  panelSettings: {fileID: 758008343996196642, guid: d0f50db2351681449a7b3b99f4ed67b8, type: 3}
+  panelAcceptChoose: {fileID: 996377358}
+  textAcceptChoose: {fileID: 1246794036}
+  buttonAcceptChooseAgree: {fileID: 1025043387}
+  buttonAcceptChooseCancel: {fileID: 1307153551}
+  panelSettings: {fileID: 0}
+  sliderSettingsSound: {fileID: 0}
 --- !u!4 &1058354085
 Transform:
   m_ObjectHideFlags: 0

@@ -30,10 +30,13 @@ public class UIManager : MonoBehaviour
         instance = GetComponent<UIManager>();
         buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
         buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
-        sliderSettingsSound.value = AudioListener.volume;
 
-        // Adding toggling UI objects in list
-        UIObjects.Add(panelSettings);
+        if (panelSettings != null)
+        {
+            sliderSettingsSound.value = AudioListener.volume;
+            UIObjects.Add(panelSettings);
+        }
+ 
         UIObjects.Add(panelAcceptChoose);
     }
 
