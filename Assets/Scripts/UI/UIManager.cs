@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    List<GameObject> UIObjects;
+    List<GameObject> UIObjects = new List<GameObject>();
 
     [Header ("Accept choose UI objects")]
     public GameObject panelAcceptChoose;
@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         instance = GetComponent<UIManager>();
+
         buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
         buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
 
@@ -36,8 +37,8 @@ public class UIManager : MonoBehaviour
             sliderSettingsSound.value = AudioListener.volume;
             UIObjects.Add(panelSettings);
         }
- 
-        UIObjects.Add(panelAcceptChoose);
+
+        UIObjects.Add(panelAcceptChoose); 
     }
 
     void ChangePortrait()
