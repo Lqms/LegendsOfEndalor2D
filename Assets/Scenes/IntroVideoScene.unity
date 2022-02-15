@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41113a34e51ed0642b9090fff335bea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introVideoName: Test
+  introVideoName: Intro
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -307,6 +307,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &996377358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3804490012633950834, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
+  m_PrefabInstance: {fileID: 1307153550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &999329240
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,14 +463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIObjects: []
-  panelAccept: {fileID: 1263435035}
+  panelAccept: {fileID: 996377358}
   textAccept: {fileID: 1246794036}
   buttonAgree: {fileID: 1025043387}
   buttonCancel: {fileID: 1307153551}
-  panelSettings: {fileID: 0}
-  portraitObjects: []
-  portraitImage: {fileID: 0}
+  panelSettings: {fileID: 758008343996196642, guid: d0f50db2351681449a7b3b99f4ed67b8, type: 3}
 --- !u!4 &1058354085
 Transform:
   m_ObjectHideFlags: 0
@@ -491,11 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1263435035 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6946226909238750481, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
-  m_PrefabInstance: {fileID: 1307153550}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1307153550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,7 +614,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3804490012633950834, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
       propertyPath: m_Name
-      value: PanelAcceptChoose
+      value: AcceptChoose
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804490012633950834, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309747296259145001, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6946226909238750481, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
       propertyPath: m_IsActive
