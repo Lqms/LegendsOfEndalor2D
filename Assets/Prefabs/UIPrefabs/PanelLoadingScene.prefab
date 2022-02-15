@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8176087345893084499}
   - component: {fileID: 6644973847425681880}
   m_Layer: 5
-  m_Name: TextHintLoadingScene
+  m_Name: TextLoadingSceneHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6217022573213605576}
   - component: {fileID: 6217022573213605577}
   m_Layer: 5
-  m_Name: TextLoadingScene
+  m_Name: TextLoadingSceneProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     List<GameObject> UIObjects;
 
-    [Header ("Accept panel")]
-    public GameObject panelAccept;
-    [SerializeField] Text textAccept;
+    [Header ("Accept choose UI objects")]
+    public GameObject panel;
+    [SerializeField] Text text;
     public Button buttonAgree;
     [SerializeField] Button buttonCancel;
 
@@ -27,12 +27,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         instance = GetComponent<UIManager>();
-        buttonAgree.onClick.AddListener(HidePanelAccept);
-        buttonCancel.onClick.AddListener(HidePanelAccept);
+        buttonAgree.onClick.AddListener(HidePanelAcceptChoose);
+        buttonCancel.onClick.AddListener(HidePanelAcceptChoose);
 
         // Adding toggling UI objects in list
         UIObjects.Add(panelSettings);
-        UIObjects.Add(panelAccept);
+        UIObjects.Add(panel);
     }
 
     void ChangePortrait()
@@ -63,38 +63,42 @@ public class UIManager : MonoBehaviour
     // Settings panel
     public void ShowPanelSettings()
     {
-        isPanelSettingsActive = true;
         Time.timeScale = 0;
-        panelSettings.SetActive(true);
-        FindObjectOfType<CursorChangerScript>().isCursorAtcive = true;
+        CursorChangerScript.instance.isCursorAtcive = true;
+
+        isPanelSettingsActive = true;
+        panelSettings.SetActive(true);      
     }
 
     public void HidePanelSettings()
     {
-        isPanelSettingsActive = false;
         Time.timeScale = 1;
-        panelSettings.SetActive(false);
-        FindObjectOfType<CursorChangerScript>().isCursorAtcive = false;
+        CursorChangerScript.instance.isCursorAtcive = false;
+
+        isPanelSettingsActive = false; 
+        panelSettings.SetActive(false);    
     }
 
 
     // Accept panel
-    public void ShowPanelAccept(string message)
+    public void ShowPanelAcceptChoose(string message)
     {
         Time.timeScale = 0;
-        textAccept.text = message;
-        FindObjectOfType<CursorChangerScript>().isCursorAtcive = true;
-        panelAccept.SetActive(true);
+        CursorChangerScript.instance.isCursorAtcive = true;
+
+        text.text = message;
+        panel.SetActive(true);
     }
 
-    public void HidePanelAccept()
+    public void HidePanelAcceptChoose()
     {
         Time.timeScale = 1;
-        FindObjectOfType<CursorChangerScript>().isCursorAtcive = false;
+        CursorChangerScript.instance.isCursorAtcive = false;
+
         buttonAgree.onClick.RemoveAllListeners();
         buttonAgree.onClick.AddListener(SoundManager.instance.ButtonSoundPlay);
-        buttonAgree.onClick.AddListener(HidePanelAccept);
-        panelAccept.SetActive(false);
+        buttonAgree.onClick.AddListener(HidePanelAcceptChoose);
+        panel.SetActive(false);
     }
 
 }

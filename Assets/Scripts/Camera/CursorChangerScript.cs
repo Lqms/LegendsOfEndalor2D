@@ -7,7 +7,6 @@ public class CursorChangerScript : MonoBehaviour
     [SerializeField] Texture2D mouseTexture;
     [SerializeField] bool isCursorActiveOnScene = false;
     public bool isCursorAtcive = false;
-    public bool hideCursor = false;
     
     void Awake() 
     {
@@ -15,18 +14,14 @@ public class CursorChangerScript : MonoBehaviour
         Cursor.visible = false; 
     }
 
-
     void OnGUI()
-    {
-        if (!hideCursor)
+    {    
+        if (isCursorAtcive || isCursorActiveOnScene)
         {
-            if (isCursorAtcive || isCursorActiveOnScene)
-            {
-                Vector2 mouse_pos = Event.current.mousePosition;
-                GUI.depth = 0;
-                GUI.Label(new Rect(mouse_pos.x - 0.5f, mouse_pos.y + 0.2f, mouseTexture.width, mouseTexture.height), mouseTexture);
-            }
-        }
+            Vector2 mouse_pos = Event.current.mousePosition;
+            GUI.depth = 0;
+            GUI.Label(new Rect(mouse_pos.x - 0.5f, mouse_pos.y + 0.2f, mouseTexture.width, mouseTexture.height), mouseTexture);
+        }       
     }
 
 }

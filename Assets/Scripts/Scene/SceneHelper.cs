@@ -12,10 +12,10 @@ public class SceneHelper : MonoBehaviour
     public int sceneIndex;
     private bool sceneIsLoading;
 
-    [Header("Panel Loading")]
+    [Header("Loading scene UI objects")]
     [SerializeField] GameObject panel;
     [SerializeField] Image image;
-    [SerializeField] Text textLoading;
+    [SerializeField] Text textProgress;
     [SerializeField] Text textHint;
     AsyncOperation asyncOperation;
 
@@ -46,7 +46,7 @@ public class SceneHelper : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             float progress = asyncOperation.progress / 0.9f;
-            textLoading.text = "Loading: " + string.Format("{0:0}%", progress * 100f);
+            textProgress.text = "Loading: " + string.Format("{0:0}%", progress * 100f);
             image.fillAmount = progress;
             yield return 0;
         }
@@ -73,9 +73,9 @@ public class SceneHelper : MonoBehaviour
     private void IntroScene()
     {
         if (sceneName != "IntroVideoScene") return;
-        if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.instance.panelAccept.activeInHierarchy)
+        if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.instance.panel.activeInHierarchy)
         {
-            UIManager.instance.ShowPanelAccept(message: "Skip Intro?");
+            UIManager.instance.ShowPanelAcceptChoose(message: "Skip Intro?");
             UIManager.instance.buttonAgree.onClick.AddListener(SkipIntroScene);
         }
         if (MainCameraVideoPlayer.instance.videoSkipped) LoadSceneByName("MainMenuScene");

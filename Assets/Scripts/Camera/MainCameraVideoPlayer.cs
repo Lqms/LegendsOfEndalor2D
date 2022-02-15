@@ -6,13 +6,8 @@ public class MainCameraVideoPlayer : MonoBehaviour
 	public static MainCameraVideoPlayer instance;
 	VideoPlayer videoPlayer;
 	[SerializeField] string introVideoName;
-
 	public bool videoSkipped { get; private set; }
 
-    MainCameraVideoPlayer()
-    {
-		videoSkipped = false;
-    }
 
     void Start()
     {
@@ -23,7 +18,6 @@ public class MainCameraVideoPlayer : MonoBehaviour
 
 	public void PlayNewVideo(string videoUrl)
     {
-		CursorChangerScript.instance.hideCursor = true;
 		videoSkipped = false;
 		videoPlayer = gameObject.AddComponent<VideoPlayer>();
 		videoPlayer.playOnAwake = false;
@@ -42,7 +36,6 @@ public class MainCameraVideoPlayer : MonoBehaviour
     {
 		if (!videoSkipped)
 		{
-			CursorChangerScript.instance.hideCursor = false;
 			videoSkipped = true;
 			Destroy(videoPlayer);
 			Debug.Log("Video Skipped: " + videoSkipped.ToString());

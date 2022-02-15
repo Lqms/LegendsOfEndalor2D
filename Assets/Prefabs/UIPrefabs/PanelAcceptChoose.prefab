@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8878336858716337584}
   - component: {fileID: 461865112136768595}
   m_Layer: 5
-  m_Name: ButtonCancel
+  m_Name: ButtonAcceptChooseCancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4047498154944895485}
   - component: {fileID: 4500113527430137366}
   m_Layer: 5
-  m_Name: TextAccept
+  m_Name: TextAcceptChoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 5403616525416313166}
   - component: {fileID: 7948097603436541740}
   m_Layer: 5
-  m_Name: AcceptChoose
+  m_Name: PanelAcceptChoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 8091064054193821796}
   - component: {fileID: 5309747296259145001}
   m_Layer: 5
-  m_Name: ButtonAgree
+  m_Name: ButtonAcceptChooseAgree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

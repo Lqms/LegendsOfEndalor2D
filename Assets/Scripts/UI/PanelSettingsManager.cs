@@ -25,7 +25,7 @@ public class PanelSettingsManager : MonoBehaviour
         panelSettings.SetActive(false);
         if (SceneHelper.instance.sceneName != "MainMenuScene")
         {
-            UIManager.instance.ShowPanelAccept(message: "Back to Main Menu?");
+            UIManager.instance.ShowPanelAcceptChoose(message: "Back to Main Menu?");
             UIManager.instance.buttonAgree.onClick.AddListener(BackToMainMenuAccept);
         }
     }

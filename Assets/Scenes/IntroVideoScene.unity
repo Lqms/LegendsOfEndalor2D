@@ -463,8 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelAccept: {fileID: 996377358}
-  textAccept: {fileID: 1246794036}
+  panel: {fileID: 996377358}
+  text: {fileID: 1246794036}
   buttonAgree: {fileID: 1025043387}
   buttonCancel: {fileID: 1307153551}
   panelSettings: {fileID: 758008343996196642, guid: d0f50db2351681449a7b3b99f4ed67b8, type: 3}
@@ -614,7 +614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3804490012633950834, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
       propertyPath: m_Name
-      value: AcceptChoose
+      value: PanelAcceptChoose
       objectReference: {fileID: 0}
     - target: {fileID: 3804490012633950834, guid: a5f496b245d87564fa54cd9663ed01f0, type: 3}
       propertyPath: m_IsActive
@@ -827,7 +827,7 @@ MonoBehaviour:
   sceneIndex: 0
   panel: {fileID: 1041373275}
   image: {fileID: 1317922329}
-  textLoading: {fileID: 1733487148}
+  textProgress: {fileID: 1733487148}
   textHint: {fileID: 6217022572654605542}
 --- !u!4 &1631014944
 Transform:
