@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CreateCharacterMenuManager : MonoBehaviour
 {
-    [Header ("Background images")]
+    [Header ("Background images and animators")]
     [SerializeField] Sprite[] imagesBackground;
 
     [Header("Choose class UI Objects")]
@@ -25,6 +25,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
         {
             case 0:
                 className = ClassOfPlayer.Warrior;
+
                 break;
             case 1:
                 className = ClassOfPlayer.Archer;
@@ -35,12 +36,22 @@ public class CreateCharacterMenuManager : MonoBehaviour
         }
 
         panelChooseClass.GetComponent<Image>().sprite = imagesBackground[index];
+        panelChooseClass.GetComponent<Animator>().SetTrigger(className.ToString());
         textChooseClassName.text = className.ToString();
+        textChooseClassInfo.text = GetClassInfo(index);
+
+    }
+
+    private string GetClassInfo(int index)
+    {
+        TextAsset data = Resources.Load("Class info") as TextAsset;
+        string[] info = data.ToString().Split('|');
+        return info[index];
     }
 
     public void AcceptButtonOnClick()
     {
-        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {classNames[index]}");
+        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {className}");
         UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(StartGame);
     }
 
