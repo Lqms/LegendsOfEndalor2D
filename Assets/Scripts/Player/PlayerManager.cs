@@ -19,6 +19,16 @@ public class PlayerManager : MonoBehaviour
     public GameObject spawnPoint;
     AudioSource audioSource;
 
+    [Header("Stats")]
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float maxMana = 100;
+    [SerializeField] float maxEnergy = 100;
+
+    [Header("Current stats")]
+    public float currentHealth = 100;
+    public float currentMana = 100;
+    public float currentEnergy = 100;
+
     private void Start()
     {
         instance = GetComponent<PlayerManager>();

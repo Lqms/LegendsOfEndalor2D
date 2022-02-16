@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite[] portraitObjects;
     [SerializeField] Image portraitImage;
 
+    [Header("Point bars")]
+    [SerializeField] Slider healthBar;
+    [SerializeField] Slider manaBar;
+    [SerializeField] Slider energyBar;
+
     private void Start()
     {
         instance = GetComponent<UIManager>();
@@ -53,6 +58,8 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings(); // Settings
         }
+
+        // Update bars values
     }
 
     // Settings panel
