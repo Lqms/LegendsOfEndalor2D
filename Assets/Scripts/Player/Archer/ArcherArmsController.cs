@@ -38,6 +38,9 @@ public class ArcherArmsController : MonoBehaviour
 
     private void Attack(bool isAltAttack)
     {
+        if (PlayerManager.instance.currentEnergy < 10) return;
+        PlayerManager.instance.currentEnergy -= 10;
+
         isAltShot = isAltAttack;
         if (isAltAttack) animator.SetTrigger("Strike");
         else animator.SetTrigger("Attack");
@@ -56,6 +59,9 @@ public class ArcherArmsController : MonoBehaviour
 
     private void Blocking()
     {
+        if (PlayerManager.instance.currentEnergy < 10) return;
+        PlayerManager.instance.currentEnergy -= 10;
+
         gameObject.GetComponentInParent<AudioSource>().PlayOneShot(dodgeSound);
         isBlocking = true;
         animator.SetTrigger("Dodge");

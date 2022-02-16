@@ -29,11 +29,38 @@ public class PlayerManager : MonoBehaviour
     public float currentMana = 100;
     public float currentEnergy = 100;
 
+    [Header("Regens")]
+    public float regenHealth = 1;
+    public float regenMana = 1;
+    public float regenEnergy = 1;
+
     private void Start()
     {
         instance = GetComponent<PlayerManager>();
         audioSource = GetComponent<AudioSource>();
         spawnPoint = GameObject.Find("SpawnPoint");
+    }
+
+    private void Update()
+    {
+        RegenPoints();
+    }
+
+    private void RegenPoints()
+    {
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        else currentHealth += regenHealth * Time.deltaTime; 
+
+        if (currentEnergy > maxEnergy) currentEnergy = maxEnergy;
+        else currentEnergy += regenEnergy * Time.deltaTime; 
+
+        if (currentMana > maxMana) currentMana = maxMana;
+        else currentMana += regenMana * Time.deltaTime; 
+
+
+        if (currentHealth < 0) currentHealth = 0;
+        if (currentMana < 0) currentMana = 0;
+        if (currentEnergy < 0) currentEnergy = 0;
     }
 
     public void Respawn()
