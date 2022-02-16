@@ -7,6 +7,8 @@ public class CharacterCreatorScript : MonoBehaviour
 {
     [Header("Character create: warrior, archer, mage")]
     [SerializeField] GameObject[] characterPrefabs;
+    private int index = 0;
+    private ClassOfPlayer choosenClassName;
 
     private void Start()
     {
@@ -19,25 +21,27 @@ public class CharacterCreatorScript : MonoBehaviour
         switch (className)
         {
             case "Warrior":
-                Debug.Log("war");
+                index = 0;
+                choosenClassName = ClassOfPlayer.Warrior;
                 break;
             case "Archer":
-                Debug.Log("arch");
+                index = 1;
+                choosenClassName = ClassOfPlayer.Archer;
                 break;
             case "Mage":
-                Debug.Log("mag");
+                index = 2;
+                choosenClassName = ClassOfPlayer.Mage;
                 break;
             default:
-                Debug.Log("Error");
+                index = 0;
+                choosenClassName = ClassOfPlayer.Warrior;
                 break;
         }
-
-        /*
-        GameObject playerObj = Instantiate(characterPrefabs[0]);
+        
+        GameObject playerObj = Instantiate(characterPrefabs[index]);
         playerObj.GetComponent<PlayerManager>().className = choosenClassName;
         playerObj.GetComponent<PlayerManager>().spawnPoint = GameObject.Find("SpawnPoint");
         playerObj.GetComponent<PlayerManager>().Respawn();
-        Destroy(gameObject);      
-        */
+        Destroy(gameObject);            
     }
 }

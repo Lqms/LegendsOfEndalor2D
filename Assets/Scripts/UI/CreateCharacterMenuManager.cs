@@ -50,7 +50,6 @@ public class CreateCharacterMenuManager : MonoBehaviour
                 break;
         }
 
-
         // BG image and anim
         GetComponent<Image>().sprite = imagesBackground[index];
         GetComponent<Animator>().SetTrigger(choosenClassName.ToString());
