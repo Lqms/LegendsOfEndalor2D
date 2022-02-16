@@ -20,9 +20,9 @@ public class PlayerManager : MonoBehaviour
     AudioSource audioSource;
 
     [Header("Stats")]
-    [SerializeField] float maxHealth = 100;
-    [SerializeField] float maxMana = 100;
-    [SerializeField] float maxEnergy = 100;
+    public float maxHealth = 100;
+    public float maxMana = 100;
+    public float maxEnergy = 100;
 
     [Header("Current stats")]
     public float currentHealth = 100;

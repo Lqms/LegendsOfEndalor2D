@@ -50,6 +50,13 @@ public class UIManager : MonoBehaviour
         {
             Invoke("ChangePortrait", 0.1f);
         }
+
+        if (FindObjectOfType<PlayerManager>() != null)
+        {
+            healthBar.value = PlayerManager.instance.maxHealth;
+            manaBar.value = PlayerManager.instance.maxMana;
+            energyBar.value = PlayerManager.instance.maxEnergy;
+        }
     }
 
     private void Update()
@@ -59,7 +66,12 @@ public class UIManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings(); // Settings
         }
 
-        // Update bars values
+        if (FindObjectOfType<PlayerManager>() != null)
+        {
+            healthBar.value = PlayerManager.instance.currentHealth;
+            manaBar.value = PlayerManager.instance.currentMana;
+            energyBar.value = PlayerManager.instance.currentEnergy;
+        }
     }
 
     // Settings panel
