@@ -7,60 +7,62 @@ using UnityEngine.UI;
 
 public class CreateCharacterMenuManager : MonoBehaviour
 {
-    public ClassOfPlayer choosenClassName;
+    public ClassOfPlayer _classOfPlayer;
     private int index = 0;
     
     [Header ("Background and class images")]
     [SerializeField] Sprite[] imagesBackground;
-    [SerializeField] Sprite[] imagesClass;
+    [SerializeField] Sprite[] imagesCharacter;
 
     [Header("Choose class UI Objects")]
     [SerializeField] Text textChooseClassName;
     [SerializeField] Text textChooseClassInfo;
-    [SerializeField] Image imageClass;
+    [SerializeField] Image imageOfCharacter;
     private Color textClassNameColor;
-    private float imageScaleX;
-    private float imageScaleY;
+    private float imageOfCharacterScaleX;
+    private float imageOfCharacterScaleY;
 
-
+    /// <summary>
+    /// indexes: 0 - Warrior, 1 - Archer, 2 - Mage
+    /// </summary>
     public void ButtonChooseClassNextOnClick()
     {
         index++;
-        if (index >= (int)ClassOfPlayer.COUNT) index = 0;
+        if (index >= 3) index = 0;
 
         switch (index)
         {          
             case 0:
-                choosenClassName = ClassOfPlayer.Warrior;
+                _classOfPlayer = ClassOfPlayer.Warrior;
                 textClassNameColor = new Color(1, 0, 0);
-                imageScaleX = 1; // 1024
-                imageScaleY = 1; // 512
+                imageOfCharacterScaleX = 1; // 1024
+                imageOfCharacterScaleY = 1; // 512
                 break;
             case 1:
-                choosenClassName = ClassOfPlayer.Archer;
+                _classOfPlayer = ClassOfPlayer.Archer;
                 textClassNameColor = new Color(0, 1, 0);
-                imageScaleX = 0.3f; //340
-                imageScaleY = 0.6f; // 512
+                imageOfCharacterScaleX = 0.3f; //340
+                imageOfCharacterScaleY = 0.6f; // 512
                 break;
             case 2:
-                choosenClassName = ClassOfPlayer.Mage;
+                _classOfPlayer = ClassOfPlayer.Mage;
                 textClassNameColor = new Color(0, 0, 1);
-                imageScaleX = 0.3f; //340
-                imageScaleY = 0.6f; // 512
+                imageOfCharacterScaleX = 0.3f; //340
+                imageOfCharacterScaleY = 0.6f; // 512
                 break;
         }
 
         // BG image and anim
-        GetComponent<Image>().sprite = imagesBackground[index];
-        GetComponent<Animator>().SetTrigger(choosenClassName.ToString());
+        gameObject.GetComponent<Image>().sprite = imagesBackground[index];
+        gameObject.GetComponent<Animator>().SetTrigger(_classOfPlayer.ToString());
 
-        // Class image, animn and scale
-        imageClass.sprite = imagesClass[index];
-        imageClass.GetComponent<Animator>().SetTrigger(choosenClassName.ToString());
-        imageClass.transform.localScale = new Vector2(imageScaleX, imageScaleY);
+        // Character image, animn and scale
+        imageOfCharacter.sprite = imagesCharacter[index];
+        imageOfCharacter.GetComponent<Animator>().SetTrigger(_classOfPlayer.ToString());
+        imageOfCharacter.transform.localScale = new Vector2(imageOfCharacterScaleX, imageOfCharacterScaleY);
 
         // texts
-        textChooseClassName.text = choosenClassName.ToString();
+        textChooseClassName.text = _classOfPlayer.ToString();
         textChooseClassName.color = textClassNameColor;
         textChooseClassInfo.text = GetClassInfo(index);
     }
@@ -74,9 +76,9 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
     public void ChooseButtonOnClick()
     {
-        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {choosenClassName}");
+        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {_classOfPlayer}");
         UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(StartGame);
-        FileManager.instance.WriteToFile(filename: "Player class", text: choosenClassName.ToString());
+        FileManager.instance.WriteToFile(filename: "Player class", text: _classOfPlayer.ToString());
     }
 
     public void StartGame()

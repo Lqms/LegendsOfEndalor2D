@@ -132,6 +132,6 @@ public class UIManager : MonoBehaviour
     // Panel character info
     void ChangePortrait()
     {
-        portraitImage.sprite = portraitObjects[(int)PlayerManager.instance.className];
+        portraitImage.sprite = portraitObjects[(int)PlayerManager.instance._classOfPlayer];
     }
 }

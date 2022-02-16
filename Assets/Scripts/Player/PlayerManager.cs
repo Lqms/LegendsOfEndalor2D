@@ -6,15 +6,14 @@ public enum ClassOfPlayer
 {
     Warrior,
     Archer,
-    Mage,
-    COUNT
+    Mage
 }
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    public ClassOfPlayer className;
+    public ClassOfPlayer _classOfPlayer;
     public bool onPause;
 
     public GameObject spawnPoint;
