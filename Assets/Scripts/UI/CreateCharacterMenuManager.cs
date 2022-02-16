@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
+
 
 
 public class CreateCharacterMenuManager : MonoBehaviour
@@ -22,10 +22,6 @@ public class CreateCharacterMenuManager : MonoBehaviour
     private float imageScaleX;
     private float imageScaleY;
 
-    private void Start()
-    {
-        File.WriteAllText("D:/My Folder/GitHubProjects/LegendsOfEndalor2Dv.0.1a/Assets/Resources/Player class.txt", choosenClassName.ToString());
-    }
 
     public void ButtonChooseClassNextOnClick()
     {
@@ -53,7 +49,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
                 imageScaleY = 0.6f; // 512
                 break;
         }
-        File.WriteAllText("D:/My Folder/GitHubProjects/LegendsOfEndalor2Dv.0.1a/Assets/Resources/Player class.txt", choosenClassName.ToString());
+
 
         // BG image and anim
         GetComponent<Image>().sprite = imagesBackground[index];
@@ -81,7 +77,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
     {
         UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {choosenClassName}");
         UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(StartGame);
-        FindObjectOfType<CharacterCreatorScript>().choosenClassName = choosenClassName;
+        FileManager.instance.WriteToFile(filename: "Player class", text: choosenClassName.ToString());
     }
 
     public void StartGame()
