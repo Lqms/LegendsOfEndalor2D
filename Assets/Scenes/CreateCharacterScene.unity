@@ -743,18 +743,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46290a75e018d24ba6ea27f394a50ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choosenClassName: 0
+  _classOfPlayer: 0
   imagesBackground:
   - {fileID: 21300000, guid: 0080f46d8aebdde47b3fb9b315d68f45, type: 3}
   - {fileID: 21300000, guid: 4e054c4f966c0fe4e806dfa67437484a, type: 3}
   - {fileID: 21300000, guid: d62709bdf474836438e0096db9f4c1f0, type: 3}
-  imagesClass:
-  - {fileID: 21300000, guid: 84ce2f114ad12bd4ebafc77060220324, type: 3}
-  - {fileID: 21300000, guid: e45fb19beaf37554c9af7e34db1e0535, type: 3}
-  - {fileID: 21300000, guid: 68e76fd669258d24aa94936c831fc1ee, type: 3}
+  imagesCharacter:
+  - {fileID: 21300000, guid: 19a7c414e85621c4b9437ee2f7204ba8, type: 3}
+  - {fileID: 21300000, guid: 58046631d8b75db4e84be03300dc4aad, type: 3}
+  - {fileID: 21300000, guid: 7cab96854064c5a44a4e2f753300aa98, type: 3}
   textChooseClassName: {fileID: 769035554}
   textChooseClassInfo: {fileID: 1397162267}
-  imageClass: {fileID: 734741767}
+  imageOfCharacter: {fileID: 0}
 --- !u!95 &377765310
 Animator:
   serializedVersion: 3
