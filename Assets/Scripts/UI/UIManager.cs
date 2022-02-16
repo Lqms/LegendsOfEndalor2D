@@ -53,10 +53,15 @@ public class UIManager : MonoBehaviour
 
         if (FindObjectOfType<PlayerManager>() != null)
         {
-            healthBar.value = PlayerManager.instance.maxHealth;
-            manaBar.value = PlayerManager.instance.maxMana;
-            energyBar.value = PlayerManager.instance.maxEnergy;
+            Invoke("FindPointsBars", 0.1f);
         }
+    }
+
+    private void FindPointsBars()
+    {
+        healthBar.maxValue = PlayerManager.instance.maxHealth;
+        manaBar.maxValue = PlayerManager.instance.maxMana;
+        energyBar.maxValue = PlayerManager.instance.maxEnergy;
     }
 
     private void Update()

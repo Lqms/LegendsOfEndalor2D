@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Regens")]
     public float regenHealth = 1;
     public float regenMana = 1;
-    public float regenEnergy = 1;
+    public float regenEnergy = 5;
 
     private void Start()
     {
