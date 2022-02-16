@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CharacterCreatorScript : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class CharacterCreatorScript : MonoBehaviour
     {
         if (!characterCreated)
         {
+            string className = File.ReadAllText("D:/My Folder/GitHubProjects/LegendsOfEndalor2Dv.0.1a/Assets/Resources/Player class.txt");
+            Debug.Log($"Class of player: {className}");
             characterCreated = true;
             GameObject playerObj = Instantiate(characterPrefabs[(int)choosenClassName]);
             playerObj.GetComponent<PlayerManager>().className = choosenClassName;
