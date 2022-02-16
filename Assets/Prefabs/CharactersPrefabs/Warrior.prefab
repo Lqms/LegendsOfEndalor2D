@@ -152,8 +152,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171f80d1fd703504fa6704b24a6b63b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  className: 0
+  _classOfPlayer: 0
   onPause: 0
+  spawnPoint: {fileID: 0}
+  maxHealth: 100
+  maxMana: 100
+  maxEnergy: 100
+  currentHealth: 100
+  currentMana: 100
+  currentEnergy: 100
+  regenHealth: 1
+  regenMana: 1
+  regenEnergy: 5
 --- !u!95 &1589481385969350317
 Animator:
   serializedVersion: 3

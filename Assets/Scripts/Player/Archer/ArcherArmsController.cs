@@ -31,7 +31,7 @@ public class ArcherArmsController : MonoBehaviour
     {
         if (LegsScript.isJump || LegsScript.isRun) return;
 
-        if (Input.GetMouseButton(0)) Attack(isAltAttack: false);
+        if (Input.GetMouseButtonDown(0)) Attack(isAltAttack: false);
         if (Input.GetMouseButtonDown(1)) Attack(isAltAttack: true);
 
     }

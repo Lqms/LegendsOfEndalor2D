@@ -40,6 +40,9 @@ public class MageLegsController : MonoBehaviour
 
     private void Jump(float distance)
     {
+        if (PlayerManager.instance.currentEnergy < 10) return;
+        PlayerManager.instance.currentEnergy -= 10;
+
         gameObject.GetComponentInParent<AudioSource>().PlayOneShot(jumpSound);
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * speed * distance, ForceMode2D.Impulse);
@@ -72,7 +75,8 @@ public class MageLegsController : MonoBehaviour
         spriteRenderer.flipX = !toTheRight;
         isRun = true;
         animator.SetBool("isRunning", true);
-        rb.velocity = new Vector2(speed * speedVector, rb.velocity.y);
+        float velocity = PlayerManager.instance.currentEnergy >= 25 ? speed : speed / 2;
+        rb.velocity = new Vector2(velocity * speedVector, rb.velocity.y);
     }
 
     private void PlayerStop()
@@ -91,6 +95,9 @@ public class MageLegsController : MonoBehaviour
 
     private void Dash()
     {
+        if (PlayerManager.instance.currentMana < 10) return;
+        PlayerManager.instance.currentMana -= 10;
+
         animator.SetBool("isRunning", false);
         animator.SetTrigger("Dash");
         gameObject.GetComponentInParent<AudioSource>().PlayOneShot(dashSound);
