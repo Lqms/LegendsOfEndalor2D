@@ -1,27 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
+    public static SoundManager Instance;
 
-    AudioSource audioSrc;
+    private AudioSource audioSrc;
 
     [Header ("UI sounds")]
-    [SerializeField] AudioClip buttonClickSound;
-    [SerializeField] AudioClip buttonNewGameSound;
+    [SerializeField] private AudioClip _buttonClickSound;
+    [SerializeField] private AudioClip _newGameSound;
 
-    void Start()
+    private void Start()
     {
-        instance = GetComponent<SoundManager>();
+        Instance = GetComponent<SoundManager>();
         audioSrc = gameObject.GetComponent<AudioSource>();
 
         Button[] buttons = FindObjectsOfType<Button>(includeInactive: true);
         foreach (Button button in buttons)
         {
-            button.onClick.AddListener(ButtonSoundPlay);
+            button.onClick.AddListener(PlayButtonClickSound);
         }
     }
     public void SoundPlayOneShot(AudioClip audioClip)
@@ -30,13 +28,13 @@ public class SoundManager : MonoBehaviour
     }
 
     // UI sounds
-    public void ButtonSoundPlay()
+    public void PlayButtonClickSound()
     {
-        audioSrc.PlayOneShot(buttonClickSound);
+        audioSrc.PlayOneShot(_buttonClickSound);
     }
 
-    public void ButtonNewGameSoundPlay()
+    public void PlayNewGameSound()
     {
-        audioSrc.PlayOneShot(buttonNewGameSound);
+        audioSrc.PlayOneShot(_newGameSound);
     }
 }

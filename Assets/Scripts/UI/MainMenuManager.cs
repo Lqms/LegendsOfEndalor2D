@@ -26,7 +26,7 @@ public class MainMenuManager : MonoBehaviour
 
     void NewGameAccept()
     {
-        SoundManager.instance.ButtonNewGameSoundPlay();
+        SoundManager.Instance.PlayNewGameSound();
         imageBG.GetComponent<Animator>().SetTrigger("NewGame"); //Change scene on event in this anim
         textVersion.text = "";
         gameObject.SetActive(false);

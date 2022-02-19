@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour
         CursorChangerScript.Instance.isCursorAtcive = false;
 
         buttonAcceptChooseAgree.onClick.RemoveAllListeners();
-        buttonAcceptChooseAgree.onClick.AddListener(SoundManager.instance.ButtonSoundPlay);
+        buttonAcceptChooseAgree.onClick.AddListener(SoundManager.Instance.PlayButtonClickSound);
         buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
         panelAcceptChoose.SetActive(false);
     }
