@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     [Header("Point bars")]
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Slider _manaBar;
-    [SerializeField] private Slider _energyBar;
+    [SerializeField] private Slider _energyBar; //тут остановилса
 
     private void Start()
     {
