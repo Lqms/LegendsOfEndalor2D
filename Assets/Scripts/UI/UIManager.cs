@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _buttonAcceptChooseAgree;
     [SerializeField] private Button _buttonAcceptChooseCancel;
 
+    // тут остановился
     [Header("Settings panel UI objects")]
     [SerializeField] GameObject panelSettings;
     [SerializeField] Slider sliderSettingsSound;
