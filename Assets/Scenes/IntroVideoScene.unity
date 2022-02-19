@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41113a34e51ed0642b9090fff335bea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introVideoName: Intro
+  _basePath: D:/My Folder/HelloWorld/Unity/Legends of Endalor 2D/LegendsOfEndalor2D/Assets/Videos/
+  _videoNameToPlay: Test
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -238,8 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507e4786a65318a4f84b621e14d41a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
-  isCursorActiveOnScene: 0
+  _mouseTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
+  _isCursorActiveOnScene: 0
   isCursorAtcive: 0
 --- !u!1 &735304555
 GameObject:
@@ -469,6 +470,11 @@ MonoBehaviour:
   buttonAcceptChooseCancel: {fileID: 1307153551}
   panelSettings: {fileID: 0}
   sliderSettingsSound: {fileID: 0}
+  portraitObjects: []
+  portraitImage: {fileID: 0}
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  energyBar: {fileID: 0}
 --- !u!4 &1058354085
 Transform:
   m_ObjectHideFlags: 0

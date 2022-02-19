@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneHelper.instance.sceneIndex > 1)
+        if (SceneHelper.Instance.sceneIndex > 1)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings(); // Settings
         }
@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
     public void ShowPanelSettings()
     {
         Time.timeScale = 0;
-        CursorChangerScript.instance.isCursorAtcive = true;
+        CursorChangerScript.Instance.isCursorAtcive = true;
 
         isPanelSettingsActive = true;
         panelSettings.SetActive(true);      
@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
     public void HidePanelSettings()
     {
         Time.timeScale = 1;
-        CursorChangerScript.instance.isCursorAtcive = false;
+        CursorChangerScript.Instance.isCursorAtcive = false;
 
         isPanelSettingsActive = false; 
         panelSettings.SetActive(false);    
@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         panelSettings.SetActive(false);
-        if (SceneHelper.instance.sceneName != "MainMenuScene")
+        if (SceneHelper.Instance.sceneName != "MainMenuScene")
         {
             ShowPanelAcceptChoose(message: "Back to Main Menu?");
             buttonAcceptChooseAgree.onClick.AddListener(BackToMainMenuAccept);
@@ -127,7 +127,7 @@ public class UIManager : MonoBehaviour
 
     void BackToMainMenuAccept()
     {
-        SceneHelper.instance.LoadSceneByName("MainMenuScene");
+        SceneHelper.Instance.LoadSceneByName("MainMenuScene");
     }
 
 
@@ -135,7 +135,7 @@ public class UIManager : MonoBehaviour
     public void ShowPanelAcceptChoose(string message)
     {
         Time.timeScale = 0;
-        CursorChangerScript.instance.isCursorAtcive = true;
+        CursorChangerScript.Instance.isCursorAtcive = true;
 
         textAcceptChoose.text = message;
         panelAcceptChoose.SetActive(true);
@@ -144,7 +144,7 @@ public class UIManager : MonoBehaviour
     public void HidePanelAcceptChoose()
     {
         Time.timeScale = 1;
-        CursorChangerScript.instance.isCursorAtcive = false;
+        CursorChangerScript.Instance.isCursorAtcive = false;
 
         buttonAcceptChooseAgree.onClick.RemoveAllListeners();
         buttonAcceptChooseAgree.onClick.AddListener(SoundManager.instance.ButtonSoundPlay);

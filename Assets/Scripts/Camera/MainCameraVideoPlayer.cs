@@ -3,42 +3,42 @@ using UnityEngine.Video;
 
 public class MainCameraVideoPlayer : MonoBehaviour
 {
-	public static MainCameraVideoPlayer instance;
-	VideoPlayer videoPlayer;
-	[SerializeField] string introVideoName;
-	public bool videoSkipped { get; private set; }
+	public static MainCameraVideoPlayer Instance;
+	public bool IsVideoSkipped { get; private set; }
 
-
-    void Start()
+	private VideoPlayer _videoPlayer;
+	[SerializeField] private string _basePath = "D:/My Folder/HelloWorld/Unity/Legends of Endalor 2D/LegendsOfEndalor2D/Assets/Videos/";
+	[SerializeField] private string _videoNameToPlay;
+	
+    private void Start()
     {
-		instance = GetComponent<MainCameraVideoPlayer>();
-		if (introVideoName != null) PlayNewVideo(introVideoName);
+		Instance = GetComponent<MainCameraVideoPlayer>();
+		if (_videoNameToPlay != null) PlayNewVideo(_videoNameToPlay);
 	}
 
-
-	public void PlayNewVideo(string videoUrl)
+	public void PlayNewVideo(string videoName)
     {
-		videoSkipped = false;
-		videoPlayer = gameObject.AddComponent<VideoPlayer>();
-		videoPlayer.playOnAwake = false;
-		videoPlayer.loopPointReached += OnReach;
-		videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.CameraNearPlane;
-		videoPlayer.url = $"D:/My Folder/HelloWorld/Unity/Legends of Endalor 2D/LegendsOfEndalor2D/Assets/Videos/{videoUrl}.mp4";
-		videoPlayer.Play();
+		IsVideoSkipped = false;
+		_videoPlayer = gameObject.AddComponent<VideoPlayer>();
+		_videoPlayer.playOnAwake = false;
+		_videoPlayer.loopPointReached += OnReach;
+		_videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+		_videoPlayer.url = _basePath + videoName + ".mp4";
+		_videoPlayer.Play();
 	}
 
-	void OnReach(VideoPlayer vp)
+	private void OnReach(VideoPlayer vp)
     {
 		SkipVideo();
     }
 
 	public void SkipVideo()
     {
-		if (!videoSkipped)
+		if (!IsVideoSkipped)
 		{
-			videoSkipped = true;
-			Destroy(videoPlayer);
-			Debug.Log("Video Skipped: " + videoSkipped.ToString());
+			IsVideoSkipped = true;
+			Destroy(_videoPlayer);
+			Debug.Log("Video Skipped: " + IsVideoSkipped.ToString());
 		}
 	}
 }

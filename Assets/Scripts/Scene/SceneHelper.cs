@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SceneHelper : MonoBehaviour
 {
-    public static SceneHelper instance;
+    public static SceneHelper Instance;
 
     [Header("Scene Info")]
     public string sceneName;
@@ -23,7 +23,7 @@ public class SceneHelper : MonoBehaviour
 
     void Start()
     {
-        instance = gameObject.GetComponent<SceneHelper>();
+        Instance = gameObject.GetComponent<SceneHelper>();
         sceneName = SceneManager.GetActiveScene().name;
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneIsLoading = false;
@@ -34,6 +34,7 @@ public class SceneHelper : MonoBehaviour
     {
         if (sceneIsLoading) return;
         sceneIsLoading = true;
+        Time.timeScale = 1;
         StartCoroutine(LoadSceneByNameCoroutine(name));
     }
 
@@ -78,12 +79,12 @@ public class SceneHelper : MonoBehaviour
             UIManager.instance.ShowPanelAcceptChoose(message: "Skip Intro?");
             UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(SkipIntroScene);
         }
-        if (MainCameraVideoPlayer.instance.videoSkipped) LoadSceneByName("MainMenuScene");
+        if (MainCameraVideoPlayer.Instance.IsVideoSkipped) LoadSceneByName("MainMenuScene");
     }
 
     private void SkipIntroScene()
     {
-        MainCameraVideoPlayer.instance.SkipVideo();
+        MainCameraVideoPlayer.Instance.SkipVideo();
         LoadSceneByName("MainMenuScene");
     }
 
