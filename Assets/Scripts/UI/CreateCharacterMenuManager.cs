@@ -4,67 +4,66 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-
 public class CreateCharacterMenuManager : MonoBehaviour
 {
-    public ClassOfPlayer _classOfPlayer;
-    private int index = 0;
+    private ClassOfPlayer _classOfPlayer;
+    private int _indexOfClass = 0;
     
-    [Header ("Background and class images")]
-    [SerializeField] Sprite[] imagesBackground;
-    [SerializeField] Sprite[] imagesCharacter;
+    [Header ("Background and class sprites")]
+    [SerializeField] private Sprite[] _spritesBackground;
+    [SerializeField] private Sprite[] _spritesCharacter;
 
     [Header("Choose class UI Objects")]
-    [SerializeField] Text textChooseClassName;
-    [SerializeField] Text textChooseClassInfo;
-    [SerializeField] Image imageOfCharacter;
-    private Color textClassNameColor;
-    private float imageOfCharacterScaleX;
-    private float imageOfCharacterScaleY;
+    [SerializeField] private Text _textChooseClassName;
+    [SerializeField] private Text _textChooseClassInfo;
+    [SerializeField] private Image _imageOfCharacter;
+    private Color _textClassNameColor;
+    private float _imageOfCharacterScaleX;
+    private float _imageOfCharacterScaleY;
 
     /// <summary>
     /// indexes: 0 - Warrior, 1 - Archer, 2 - Mage
     /// </summary>
     public void ButtonChooseClassNextOnClick()
     {
-        index++;
-        if (index >= 3) index = 0;
+        _indexOfClass++;
+        if (_indexOfClass >= 3) _indexOfClass = 0;
 
-        switch (index)
+        switch (_indexOfClass)
         {          
             case 0:
                 _classOfPlayer = ClassOfPlayer.Warrior;
-                textClassNameColor = new Color(1, 0, 0);
-                imageOfCharacterScaleX = 1; // 1024
-                imageOfCharacterScaleY = 1; // 512
+                _textClassNameColor = new Color(1, 0, 0);
+                _imageOfCharacterScaleX = 1; // 1024
+                _imageOfCharacterScaleY = 1; // 512
                 break;
             case 1:
                 _classOfPlayer = ClassOfPlayer.Archer;
-                textClassNameColor = new Color(0, 1, 0);
-                imageOfCharacterScaleX = 0.3f; //340
-                imageOfCharacterScaleY = 0.6f; // 512
+                _textClassNameColor = new Color(0, 1, 0);
+                _imageOfCharacterScaleX = 0.3f; //340
+                _imageOfCharacterScaleY = 0.6f; // 512
                 break;
             case 2:
                 _classOfPlayer = ClassOfPlayer.Mage;
-                textClassNameColor = new Color(0, 0, 1);
-                imageOfCharacterScaleX = 0.3f; //340
-                imageOfCharacterScaleY = 0.6f; // 512
+                _textClassNameColor = new Color(0, 0, 1);
+                _imageOfCharacterScaleX = 0.3f; //340
+                _imageOfCharacterScaleY = 0.6f; // 512
                 break;
         }
 
         // BG image and anim
-        gameObject.GetComponent<Image>().sprite = imagesBackground[index];
+        gameObject.GetComponent<Image>().sprite = _spritesBackground[_indexOfClass];
         gameObject.GetComponent<Animator>().SetTrigger(_classOfPlayer.ToString());
 
         // Character image, animn and scale
-        imageOfCharacter.sprite = imagesCharacter[index];
-        imageOfCharacter.GetComponent<Animator>().SetTrigger(_classOfPlayer.ToString());
-        imageOfCharacter.transform.localScale = new Vector2(imageOfCharacterScaleX, imageOfCharacterScaleY);
+        _imageOfCharacter.sprite = _spritesCharacter[_indexOfClass];
+        _imageOfCharacter.GetComponent<Animator>().SetTrigger(_classOfPlayer.ToString());
+        _imageOfCharacter.transform.localScale = new Vector2(_imageOfCharacterScaleX, _imageOfCharacterScaleY);
 
         // texts
-        textChooseClassName.text = _classOfPlayer.ToString();
-        textChooseClassName.color = textClassNameColor;
-        textChooseClassInfo.text = GetClassInfo(index);
+        _textChooseClassName.text = _classOfPlayer.ToString();
+        _textChooseClassName.color = _textClassNameColor;
+        _textChooseClassInfo.text = GetClassInfo(_indexOfClass);
     }
 
     private string GetClassInfo(int index)

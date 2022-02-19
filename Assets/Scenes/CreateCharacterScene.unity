@@ -298,9 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507e4786a65318a4f84b621e14d41a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
-  isCursorActiveOnScene: 1
-  isCursorAtcive: 1
+  _mouseTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
+  _isCursorActiveOnScene: 1
+  isCursorAtcive: 0
 --- !u!1 &151124718
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -12.500092}
+  m_AnchoredPosition: {x: 0, y: -12.500122}
   m_SizeDelta: {x: 0, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377765309
@@ -743,18 +743,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46290a75e018d24ba6ea27f394a50ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _classOfPlayer: 0
-  imagesBackground:
+  _spritesBackground:
   - {fileID: 21300000, guid: 0080f46d8aebdde47b3fb9b315d68f45, type: 3}
   - {fileID: 21300000, guid: 4e054c4f966c0fe4e806dfa67437484a, type: 3}
   - {fileID: 21300000, guid: d62709bdf474836438e0096db9f4c1f0, type: 3}
-  imagesCharacter:
-  - {fileID: 21300000, guid: 19a7c414e85621c4b9437ee2f7204ba8, type: 3}
-  - {fileID: 21300000, guid: 58046631d8b75db4e84be03300dc4aad, type: 3}
-  - {fileID: 21300000, guid: 7cab96854064c5a44a4e2f753300aa98, type: 3}
-  textChooseClassName: {fileID: 769035554}
-  textChooseClassInfo: {fileID: 1397162267}
-  imageOfCharacter: {fileID: 734741767}
+  _spritesCharacter:
+  - {fileID: 21300000, guid: 84ce2f114ad12bd4ebafc77060220324, type: 3}
+  - {fileID: 21300000, guid: e45fb19beaf37554c9af7e34db1e0535, type: 3}
+  - {fileID: 21300000, guid: 68e76fd669258d24aa94936c831fc1ee, type: 3}
+  _textChooseClassName: {fileID: 769035554}
+  _textChooseClassInfo: {fileID: 1397162267}
+  _imageOfCharacter: {fileID: 734741767}
 --- !u!95 &377765310
 Animator:
   serializedVersion: 3
@@ -1346,8 +1345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04efba22118bc5b46a1412f13943e176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClickSound: {fileID: 8300000, guid: 8085924495112834f9691e66a96856b0, type: 3}
-  buttonNewGameSound: {fileID: 8300000, guid: 2ad429b185ea6e34c91bd58db9a7eb5f, type: 3}
+  _buttonClickSound: {fileID: 8300000, guid: 8085924495112834f9691e66a96856b0, type: 3}
+  _newGameSound: {fileID: 8300000, guid: 2ad429b185ea6e34c91bd58db9a7eb5f, type: 3}
 --- !u!4 &1058306694
 Transform:
   m_ObjectHideFlags: 0
@@ -1873,14 +1872,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelAcceptChoose: {fileID: 500922886}
-  textAcceptChoose: {fileID: 500922885}
-  buttonAcceptChooseAgree: {fileID: 500922884}
-  buttonAcceptChooseCancel: {fileID: 500922883}
-  panelSettings: {fileID: 6636827699145574509}
-  sliderSettingsSound: {fileID: 6636827699145574508}
-  portraitObjects: []
-  portraitImage: {fileID: 0}
+  _panelAcceptChoose: {fileID: 500922886}
+  _textAcceptChoose: {fileID: 500922885}
+  _buttonAcceptChooseAgree: {fileID: 500922884}
+  _buttonAcceptChooseCancel: {fileID: 500922883}
+  _panelSettings: {fileID: 6636827699145574509}
+  _sliderSettingsSound: {fileID: 6636827699145574508}
+  _portraitSprites: []
+  _portraitImage: {fileID: 0}
+  _healthBar: {fileID: 0}
+  _manaBar: {fileID: 0}
+  _energyBar: {fileID: 0}
 --- !u!4 &1713884206
 Transform:
   m_ObjectHideFlags: 0
@@ -1924,12 +1926,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47962f4534b82c4479245be5f1ecfb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CreateCharacterScene
-  sceneIndex: 2
-  panel: {fileID: 1186788789}
-  image: {fileID: 1186788788}
-  textProgress: {fileID: 1186788786}
-  textHint: {fileID: 1186788790}
+  _sceneName: 2
+  _sceneIndex: 2
+  _panelLoadingScene: {fileID: 1186788789}
+  _imageLoadingSceneProgress: {fileID: 1186788788}
+  _textLoadingSceneProgress: {fileID: 1186788786}
+  _textLoadingSceneHint: {fileID: 1186788790}
 --- !u!4 &2123292450
 Transform:
   m_ObjectHideFlags: 0
