@@ -7,7 +7,7 @@ public class MainCameraVideoPlayer : MonoBehaviour
 	public bool IsVideoSkipped { get; private set; }
 
 	private VideoPlayer _videoPlayer;
-	[SerializeField] private string _basePath = "D:/My Folder/HelloWorld/Unity/Legends of Endalor 2D/LegendsOfEndalor2D/Assets/Videos/";
+	[SerializeField] private string _basePath = "D:/My Folder/GitHubProjects/LegendsOfEndalor2Dv.0.1a/Assets/Videos/";
 	[SerializeField] private string _videoNameToPlay;
 	
     private void Start()

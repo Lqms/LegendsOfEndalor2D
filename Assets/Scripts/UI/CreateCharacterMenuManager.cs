@@ -83,7 +83,7 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneHelper.Instance.LoadSceneByName("TutorialScene");
+        SceneHelper.Instance.LoadSceneByName(SceneNames.TutorialScene);
     }
     
 }

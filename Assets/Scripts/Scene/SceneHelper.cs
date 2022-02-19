@@ -3,97 +3,111 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+public enum SceneNames
+{
+    IntroVideoScene,
+    MainMenuScene,
+    CreateCharacterScene,
+    TutorialScene
+}
+
+
 public class SceneHelper : MonoBehaviour
 {
     public static SceneHelper Instance;
+    public SceneNames SceneName => _sceneName;
+    public int SceneIndex => _sceneIndex;
 
     [Header("Scene Info")]
-    public string sceneName;
-    public int sceneIndex;
-    private bool sceneIsLoading;
+    [SerializeField] private SceneNames _sceneName;
+    [SerializeField] private int _sceneIndex;
+    private bool _sceneIsLoading;
 
     [Header("Loading scene UI objects")]
-    [SerializeField] GameObject panel;
-    [SerializeField] Image image;
-    [SerializeField] Text textProgress;
-    [SerializeField] Text textHint;
-    AsyncOperation asyncOperation;
-
-
+    [SerializeField] private GameObject _panelLoadingScene;
+    [SerializeField] private Image _imageLoadingSceneProgress;
+    [SerializeField] private Text _textLoadingSceneProgress;
+    [SerializeField] private Text _textLoadingSceneHint;
+    private AsyncOperation asyncOperationForLoadingScene;
 
     void Start()
     {
         Instance = gameObject.GetComponent<SceneHelper>();
-        sceneName = SceneManager.GetActiveScene().name;
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        sceneIsLoading = false;
+        _sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        _sceneIsLoading = false;
     }
 
-    // Load scene and show panel loading
-    public void LoadSceneByName(string name)
+    /// <summary>
+    /// Loading a scene and showing the loading panel
+    /// </summary>
+    /// <param name="sceneName"></param>
+    public void LoadSceneByName(SceneNames sceneName)
     {
-        if (sceneIsLoading) return;
-        sceneIsLoading = true;
+        if (_sceneIsLoading) return;
+        _sceneIsLoading = true;
         Time.timeScale = 1;
-        StartCoroutine(LoadSceneByNameCoroutine(name));
+        StartCoroutine(SceneLoadingCoroutine(sceneName.ToString()));
     }
 
-    private IEnumerator LoadSceneByNameCoroutine(string name)
+    private IEnumerator SceneLoadingCoroutine(string sceneName)
     {
-        NewHint();
-        panel.SetActive(true);
+        GetNewHintForLoadingPanel();
+        _panelLoadingScene.SetActive(true);
         yield return new WaitForSeconds(1f);
-        asyncOperation = SceneManager.LoadSceneAsync(name);
-        while (!asyncOperation.isDone)
+        asyncOperationForLoadingScene = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!asyncOperationForLoadingScene.isDone)
         {
-            float progress = asyncOperation.progress / 0.9f;
-            textProgress.text = "Loading: " + string.Format("{0:0}%", progress * 100f);
-            image.fillAmount = progress;
+            float progress = asyncOperationForLoadingScene.progress / 0.9f;
+            _textLoadingSceneProgress.text = "Loading: " + string.Format("{0:0}%", progress * 100f);
+            _imageLoadingSceneProgress.fillAmount = progress;
             yield return 0;
         }
     }
 
-    private void NewHint()
+    private void GetNewHintForLoadingPanel()
     {
         TextAsset data = Resources.Load("Loading hints") as TextAsset;
         string[] hints = data.ToString().Split('|');
         int index = Random.Range(0, hints.Length);
-        textHint.text = hints[index];
+        _textLoadingSceneHint.text = hints[index];
     }
 
     // Scenes Logic
     private void Update()
     {
-        IntroScene();
-        MainMenuScene();
+        IntroVideoSceneLogic();
+        MainMenuSceneLogic();
     }
 
     /// <summary>
     /// Change scene when intro video is over or skipped
     /// </summary>
-    private void IntroScene()
+    private void IntroVideoSceneLogic()
     {
-        if (sceneName != "IntroVideoScene") return;
+        if (_sceneName != SceneNames.IntroVideoScene) return;
+
         if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.instance.panelAcceptChoose.activeInHierarchy)
         {
             UIManager.instance.ShowPanelAcceptChoose(message: "Skip Intro?");
             UIManager.instance.buttonAcceptChooseAgree.onClick.AddListener(SkipIntroScene);
         }
-        if (MainCameraVideoPlayer.Instance.IsVideoSkipped) LoadSceneByName("MainMenuScene");
+        if (MainCameraVideoPlayer.Instance.IsVideoSkipped) LoadSceneByName(SceneNames.MainMenuScene);
     }
 
     private void SkipIntroScene()
     {
         MainCameraVideoPlayer.Instance.SkipVideo();
-        LoadSceneByName("MainMenuScene");
+        LoadSceneByName(SceneNames.MainMenuScene);
     }
 
     /// <summary>
     /// Change scene on event in ImageBGSceneHelper's curtain animation
     /// </summary>
-    private void MainMenuScene()
+    private void MainMenuSceneLogic()
     {
-        if (sceneName != "MaunMenuScene") return;
+        if (_sceneName != SceneNames.MainMenuScene) return;
     }
      
 

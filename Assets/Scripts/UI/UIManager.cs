@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneHelper.Instance.sceneIndex > 1)
+        if (SceneHelper.Instance.SceneIndex > 1)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings(); // Settings
         }
@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         panelSettings.SetActive(false);
-        if (SceneHelper.Instance.sceneName != "MainMenuScene")
+        if (SceneHelper.Instance.SceneName != SceneNames.MainMenuScene)
         {
             ShowPanelAcceptChoose(message: "Back to Main Menu?");
             buttonAcceptChooseAgree.onClick.AddListener(BackToMainMenuAccept);
@@ -127,7 +127,7 @@ public class UIManager : MonoBehaviour
 
     void BackToMainMenuAccept()
     {
-        SceneHelper.Instance.LoadSceneByName("MainMenuScene");
+        SceneHelper.Instance.LoadSceneByName(SceneNames.MainMenuScene);
     }
 
 

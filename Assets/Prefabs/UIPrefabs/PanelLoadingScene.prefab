@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6217022573887378175}
   - component: {fileID: 6217022573887378172}
   m_Layer: 5
-  m_Name: ImageLoadingScene
+  m_Name: ImageLoadingSceneProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41113a34e51ed0642b9090fff335bea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basePath: D:/My Folder/HelloWorld/Unity/Legends of Endalor 2D/LegendsOfEndalor2D/Assets/Videos/
+  _basePath: D:/My Folder/GitHubProjects/LegendsOfEndalor2Dv.0.1a/Assets/Videos/
   _videoNameToPlay: Test
 --- !u!20 &519420031
 Camera:
@@ -830,12 +830,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47962f4534b82c4479245be5f1ecfb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: IntroVideoScene
-  sceneIndex: 0
-  panel: {fileID: 1041373275}
-  image: {fileID: 1317922329}
-  textProgress: {fileID: 1733487148}
-  textHint: {fileID: 6217022572654605542}
+  _sceneName: 0
+  _sceneIndex: 0
+  _panelLoadingScene: {fileID: 1041373275}
+  _imageLoadingSceneProgress: {fileID: 1317922329}
+  _textLoadingSceneProgress: {fileID: 1733487148}
+  _textLoadingSceneHint: {fileID: 6217022572654605542}
 --- !u!4 &1631014944
 Transform:
   m_ObjectHideFlags: 0
