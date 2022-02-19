@@ -76,8 +76,8 @@ public class CreateCharacterMenuManager : MonoBehaviour
 
     public void ChooseButtonOnClick()
     {
-        UIManager.instance.ShowPanelAcceptChoose(message: $"Start a game as {_classOfPlayer}");
-        UIManager.instance.ButtonAcceptChooseAgree.onClick.AddListener(StartGame);
+        UIManager.Instance.ShowPanelAcceptChoose(message: $"Start a game as {_classOfPlayer}");
+        UIManager.Instance.ButtonAcceptChooseAgree.onClick.AddListener(StartGame);
         FileManager.instance.WriteToFile(filename: "Player class", text: _classOfPlayer.ToString());
     }
 

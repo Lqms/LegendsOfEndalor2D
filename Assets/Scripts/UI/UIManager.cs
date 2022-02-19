@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    public static UIManager Instance;
     public Button ButtonAcceptChooseAgree => _buttonAcceptChooseAgree;
     public GameObject PanelAcceptChoose => _panelAcceptChoose;
 
@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        instance = GetComponent<UIManager>();
+        Instance = GetComponent<UIManager>();
 
         _buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
         _buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
@@ -57,29 +57,31 @@ public class UIManager : MonoBehaviour
 
         if (FindObjectOfType<PlayerManager>() != null)
         {
-            Invoke("FindPointsBars", 0.1f);
+            Invoke("SetupPointBarsValues", 0.1f);
         }
     }
 
-    private void FindPointsBars()
+    private void SetupPointBarsValues()
     {
         _healthBar.maxValue = PlayerManager.instance.maxHealth;
         _manaBar.maxValue = PlayerManager.instance.maxMana;
         _energyBar.maxValue = PlayerManager.instance.maxEnergy;
+
+        _healthBar.value = PlayerManager.instance.currentHealth;
+        _manaBar.value = PlayerManager.instance.currentMana;
+        _energyBar.value = PlayerManager.instance.currentEnergy;
     }
 
     private void Update()
     {
         if (SceneHelper.Instance.SceneIndex > 1)
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings(); // Settings
+            if (Input.GetKeyDown(KeyCode.Escape)) TogglePanelSettings();
         }
 
         if (FindObjectOfType<PlayerManager>() != null)
         {
-            _healthBar.value = PlayerManager.instance.currentHealth;
-            _manaBar.value = PlayerManager.instance.currentMana;
-            _energyBar.value = PlayerManager.instance.currentEnergy;
+            SetupPointBarsValues();
         }
     }
 
@@ -120,7 +122,6 @@ public class UIManager : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        Time.timeScale = 1;
         _panelSettings.SetActive(false);
         if (SceneHelper.Instance.SceneName != SceneNames.MainMenuScene)
         {
@@ -153,6 +154,7 @@ public class UIManager : MonoBehaviour
         _buttonAcceptChooseAgree.onClick.RemoveAllListeners();
         _buttonAcceptChooseAgree.onClick.AddListener(SoundManager.Instance.PlayButtonClickSound);
         _buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
+
         _panelAcceptChoose.SetActive(false);
     }
 

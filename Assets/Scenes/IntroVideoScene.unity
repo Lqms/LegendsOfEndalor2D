@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basePath: D:/My Folder/GitHubProjects/LegendsOfEndalor2Dv.0.1a/Assets/Videos/
-  _videoNameToPlay: Test
+  _videoNameToPlay: Intro
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

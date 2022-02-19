@@ -88,10 +88,10 @@ public class SceneHelper : MonoBehaviour
     {
         if (_sceneName != SceneNames.IntroVideoScene) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.instance.PanelAcceptChoose.activeInHierarchy)
+        if (Input.GetKeyDown(KeyCode.Escape) && !UIManager.Instance.PanelAcceptChoose.activeInHierarchy)
         {
-            UIManager.instance.ShowPanelAcceptChoose(message: "Skip Intro?");
-            UIManager.instance.ButtonAcceptChooseAgree.onClick.AddListener(SkipIntroScene);
+            UIManager.Instance.ShowPanelAcceptChoose(message: "Skip Intro?");
+            UIManager.Instance.ButtonAcceptChooseAgree.onClick.AddListener(SkipIntroScene);
         }
         if (MainCameraVideoPlayer.Instance.IsVideoSkipped) LoadSceneByName(SceneNames.MainMenuScene);
     }
