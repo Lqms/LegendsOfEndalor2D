@@ -501,13 +501,13 @@ MonoBehaviour:
   _textAcceptChoose: {fileID: 1246794036}
   _buttonAcceptChooseAgree: {fileID: 1025043387}
   _buttonAcceptChooseCancel: {fileID: 1307153551}
-  panelSettings: {fileID: 0}
-  sliderSettingsSound: {fileID: 0}
-  portraitObjects: []
-  portraitImage: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  energyBar: {fileID: 0}
+  _panelSettings: {fileID: 0}
+  _sliderSettingsSound: {fileID: 0}
+  _portraitSprites: []
+  _portraitImage: {fileID: 0}
+  _healthBar: {fileID: 0}
+  _manaBar: {fileID: 0}
+  _energyBar: {fileID: 0}
 --- !u!4 &1058354085
 Transform:
   m_ObjectHideFlags: 0

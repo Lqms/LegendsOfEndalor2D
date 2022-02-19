@@ -18,20 +18,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _buttonAcceptChooseAgree;
     [SerializeField] private Button _buttonAcceptChooseCancel;
 
-    // тут остановился
     [Header("Settings panel UI objects")]
-    [SerializeField] GameObject panelSettings;
-    [SerializeField] Slider sliderSettingsSound;
+    [SerializeField] private GameObject _panelSettings;
+    [SerializeField] private Slider _sliderSettingsSound;
     private bool isPanelSettingsActive = false;
 
-    [Header("character portrait and info: warrior, archer, mage ")]
-    [SerializeField] Sprite[] portraitObjects;
-    [SerializeField] Image portraitImage;
+    [Header("Character portrait and info: warrior, archer, mage ")]
+    [SerializeField] private Sprite[] _portraitSprites;
+    [SerializeField] private Image _portraitImage;
 
     [Header("Point bars")]
-    [SerializeField] Slider healthBar;
-    [SerializeField] Slider manaBar;
-    [SerializeField] Slider energyBar;
+    [SerializeField] private Slider _healthBar;
+    [SerializeField] private Slider _manaBar;
+    [SerializeField] private Slider _energyBar;
 
     private void Start()
     {
@@ -40,10 +39,10 @@ public class UIManager : MonoBehaviour
         _buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
         _buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
 
-        if (panelSettings != null)
+        if (_panelSettings != null)
         {
-            sliderSettingsSound.value = AudioListener.volume;
-            _UIObjects.Add(panelSettings);
+            _sliderSettingsSound.value = AudioListener.volume;
+            _UIObjects.Add(_panelSettings);
         }
 
         if (_panelAcceptChoose != null)
@@ -51,7 +50,7 @@ public class UIManager : MonoBehaviour
             _UIObjects.Add(_panelAcceptChoose);
         }
 
-        if (portraitImage != null)
+        if (_portraitImage != null)
         {
             Invoke("ChangePortrait", 0.1f);
         }
@@ -64,9 +63,9 @@ public class UIManager : MonoBehaviour
 
     private void FindPointsBars()
     {
-        healthBar.maxValue = PlayerManager.instance.maxHealth;
-        manaBar.maxValue = PlayerManager.instance.maxMana;
-        energyBar.maxValue = PlayerManager.instance.maxEnergy;
+        _healthBar.maxValue = PlayerManager.instance.maxHealth;
+        _manaBar.maxValue = PlayerManager.instance.maxMana;
+        _energyBar.maxValue = PlayerManager.instance.maxEnergy;
     }
 
     private void Update()
@@ -78,9 +77,9 @@ public class UIManager : MonoBehaviour
 
         if (FindObjectOfType<PlayerManager>() != null)
         {
-            healthBar.value = PlayerManager.instance.currentHealth;
-            manaBar.value = PlayerManager.instance.currentMana;
-            energyBar.value = PlayerManager.instance.currentEnergy;
+            _healthBar.value = PlayerManager.instance.currentHealth;
+            _manaBar.value = PlayerManager.instance.currentMana;
+            _energyBar.value = PlayerManager.instance.currentEnergy;
         }
     }
 
@@ -102,7 +101,7 @@ public class UIManager : MonoBehaviour
         CursorChangerScript.Instance.isCursorAtcive = true;
 
         isPanelSettingsActive = true;
-        panelSettings.SetActive(true);      
+        _panelSettings.SetActive(true);      
     }
 
     public void HidePanelSettings()
@@ -111,18 +110,18 @@ public class UIManager : MonoBehaviour
         CursorChangerScript.Instance.isCursorAtcive = false;
 
         isPanelSettingsActive = false; 
-        panelSettings.SetActive(false);    
+        _panelSettings.SetActive(false);    
     }
 
     public void SliderSoundOnChange()
     {
-        AudioListener.volume = sliderSettingsSound.value;
+        AudioListener.volume = _sliderSettingsSound.value;
     }
 
     public void BackToMainMenu()
     {
         Time.timeScale = 1;
-        panelSettings.SetActive(false);
+        _panelSettings.SetActive(false);
         if (SceneHelper.Instance.SceneName != SceneNames.MainMenuScene)
         {
             ShowPanelAcceptChoose(message: "Back to Main Menu?");
@@ -161,6 +160,6 @@ public class UIManager : MonoBehaviour
     // Panel character info
     void ChangePortrait()
     {
-        portraitImage.sprite = portraitObjects[(int)PlayerManager.instance._classOfPlayer];
+        _portraitImage.sprite = _portraitSprites[(int)PlayerManager.instance._classOfPlayer];
     }
 }
