@@ -278,12 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c5dee6b6a12ad45987f85286550af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefabs:
+  _characterPrefabs:
   - {fileID: 1589481385969350307, guid: 1e651b00b13d1df46a288c9a4b33046c, type: 3}
   - {fileID: 1557078049490084553, guid: 362d6ee34223fcc4f9b29ba5aa1a9de4, type: 3}
   - {fileID: 5301568611522307808, guid: 88f70fb6f9a6de241b6b339ead7b06a5, type: 3}
-  _classOfPlayer: 2
-  isTest: 1
+  _classOfPlayer: 0
+  _isTest: 0
 --- !u!1001 &174575937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -856,20 +856,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelAcceptChoose: {fileID: 311523395}
-  textAcceptChoose: {fileID: 311523394}
-  buttonAcceptChooseAgree: {fileID: 311523393}
-  buttonAcceptChooseCancel: {fileID: 311523392}
-  panelSettings: {fileID: 174575940}
-  sliderSettingsSound: {fileID: 174575939}
-  portraitObjects:
+  _panelAcceptChoose: {fileID: 311523395}
+  _textAcceptChoose: {fileID: 311523394}
+  _buttonAcceptChooseAgree: {fileID: 311523393}
+  _buttonAcceptChooseCancel: {fileID: 311523392}
+  _panelSettings: {fileID: 174575940}
+  _sliderSettingsSound: {fileID: 174575939}
+  _portraitSprites:
   - {fileID: 21300000, guid: 19a7c414e85621c4b9437ee2f7204ba8, type: 3}
   - {fileID: 21300000, guid: 58046631d8b75db4e84be03300dc4aad, type: 3}
   - {fileID: 21300000, guid: 7cab96854064c5a44a4e2f753300aa98, type: 3}
-  portraitImage: {fileID: 5522155903057356997}
-  healthBar: {fileID: 1364036714}
-  manaBar: {fileID: 873291186}
-  energyBar: {fileID: 1052755433}
+  _portraitImage: {fileID: 5522155903057356997}
+  _healthBar: {fileID: 1364036714}
+  _manaBar: {fileID: 873291186}
+  _energyBar: {fileID: 1052755433}
 --- !u!114 &492968348 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6217022573887378172, guid: 9ba28e8b9f9f5e5498b0c3cfbbafbda2, type: 3}
@@ -1173,12 +1173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47962f4534b82c4479245be5f1ecfb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: TutorialScene
-  sceneIndex: 3
-  panel: {fileID: 1131149950}
-  image: {fileID: 492968348}
-  textProgress: {fileID: 319445504}
-  textHint: {fileID: 44789703}
+  _sceneName: 3
+  _sceneIndex: 3
+  _panelLoadingScene: {fileID: 1131149950}
+  _imageLoadingSceneProgress: {fileID: 492968348}
+  _textLoadingSceneProgress: {fileID: 319445504}
+  _textLoadingSceneHint: {fileID: 44789703}
 --- !u!4 &699213103
 Transform:
   m_ObjectHideFlags: 0
@@ -1320,8 +1320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507e4786a65318a4f84b621e14d41a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
-  isCursorActiveOnScene: 0
+  _mouseTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
+  _isCursorActiveOnScene: 0
   isCursorAtcive: 0
 --- !u!114 &873291186 stripped
 MonoBehaviour:
@@ -2775,8 +2775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04efba22118bc5b46a1412f13943e176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClickSound: {fileID: 8300000, guid: 8085924495112834f9691e66a96856b0, type: 3}
-  buttonNewGameSound: {fileID: 8300000, guid: 2ad429b185ea6e34c91bd58db9a7eb5f, type: 3}
+  _buttonClickSound: {fileID: 8300000, guid: 8085924495112834f9691e66a96856b0, type: 3}
+  _newGameSound: {fileID: 8300000, guid: 2ad429b185ea6e34c91bd58db9a7eb5f, type: 3}
 --- !u!4 &1417386636
 Transform:
   m_ObjectHideFlags: 0

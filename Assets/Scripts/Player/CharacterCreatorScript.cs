@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class CharacterCreatorScript : MonoBehaviour
 {
     [Header("Character create: warrior, archer, mage")]
-    [SerializeField] GameObject[] characterPrefabs;
-    [SerializeField] ClassOfPlayer _classOfPlayer;
-    [SerializeField] bool isTest = false;
+    [SerializeField] private GameObject[] _characterPrefabs;
+    [SerializeField] private ClassOfPlayer _classOfPlayer;
+    [SerializeField] private bool _isTest = false;
 
-    private string className;
+    private string _className;
 
     private void Start()
     {
@@ -19,11 +18,11 @@ public class CharacterCreatorScript : MonoBehaviour
 
     private void CreateCharacter()
     {
-        if (!isTest)
+        if (!_isTest)
         {
-            className = FileManager.instance.ReadFromFile(filename: "Player class");
+            _className = FileManager.instance.ReadFromFile(filename: "Player class");
 
-            switch (className)
+            switch (_className)
             {
                 case "Warrior":
                     _classOfPlayer = ClassOfPlayer.Warrior;
@@ -41,7 +40,7 @@ public class CharacterCreatorScript : MonoBehaviour
         }
 
 
-        GameObject playerObj = Instantiate(characterPrefabs[(int)_classOfPlayer]);
+        GameObject playerObj = Instantiate(_characterPrefabs[(int)_classOfPlayer]);
         playerObj.GetComponent<PlayerManager>()._classOfPlayer = _classOfPlayer;
         playerObj.GetComponent<PlayerManager>().spawnPoint = GameObject.Find("SpawnPoint");
         playerObj.GetComponent<PlayerManager>().Respawn();
