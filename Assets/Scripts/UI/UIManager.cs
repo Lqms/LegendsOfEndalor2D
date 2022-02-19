@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    List<GameObject> UIObjects = new List<GameObject>();
+    public Button ButtonAcceptChooseAgree => _buttonAcceptChooseAgree;
+    public GameObject PanelAcceptChoose => _panelAcceptChoose;
 
-    [Header ("Accept choose UI objects")]
-    public GameObject panelAcceptChoose;
-    [SerializeField] Text textAcceptChoose;
-    public Button buttonAcceptChooseAgree;
-    [SerializeField] Button buttonAcceptChooseCancel;
+
+    private List<GameObject> _UIObjects = new List<GameObject>();
+
+    [Header("Accept choose UI objects")]
+    [SerializeField] private GameObject _panelAcceptChoose;
+    [SerializeField] private Text _textAcceptChoose;
+    [SerializeField] private Button _buttonAcceptChooseAgree;
+    [SerializeField] private Button _buttonAcceptChooseCancel;
 
     [Header("Settings panel UI objects")]
     [SerializeField] GameObject panelSettings;
@@ -32,18 +36,18 @@ public class UIManager : MonoBehaviour
     {
         instance = GetComponent<UIManager>();
 
-        buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
-        buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
+        _buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
+        _buttonAcceptChooseCancel.onClick.AddListener(HidePanelAcceptChoose);
 
         if (panelSettings != null)
         {
             sliderSettingsSound.value = AudioListener.volume;
-            UIObjects.Add(panelSettings);
+            _UIObjects.Add(panelSettings);
         }
 
-        if (panelAcceptChoose != null)
+        if (_panelAcceptChoose != null)
         {
-            UIObjects.Add(panelAcceptChoose);
+            _UIObjects.Add(_panelAcceptChoose);
         }
 
         if (portraitImage != null)
@@ -82,7 +86,7 @@ public class UIManager : MonoBehaviour
     // Settings panel
     private void TogglePanelSettings()
     {
-        foreach (GameObject UIobj in UIObjects)
+        foreach (GameObject UIobj in _UIObjects)
         {
             UIobj.SetActive(false);
         }
@@ -121,7 +125,7 @@ public class UIManager : MonoBehaviour
         if (SceneHelper.Instance.SceneName != SceneNames.MainMenuScene)
         {
             ShowPanelAcceptChoose(message: "Back to Main Menu?");
-            buttonAcceptChooseAgree.onClick.AddListener(BackToMainMenuAccept);
+            _buttonAcceptChooseAgree.onClick.AddListener(BackToMainMenuAccept);
         }
     }
 
@@ -137,8 +141,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         CursorChangerScript.Instance.isCursorAtcive = true;
 
-        textAcceptChoose.text = message;
-        panelAcceptChoose.SetActive(true);
+        _textAcceptChoose.text = message;
+        _panelAcceptChoose.SetActive(true);
     }
 
     public void HidePanelAcceptChoose()
@@ -146,10 +150,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         CursorChangerScript.Instance.isCursorAtcive = false;
 
-        buttonAcceptChooseAgree.onClick.RemoveAllListeners();
-        buttonAcceptChooseAgree.onClick.AddListener(SoundManager.Instance.PlayButtonClickSound);
-        buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
-        panelAcceptChoose.SetActive(false);
+        _buttonAcceptChooseAgree.onClick.RemoveAllListeners();
+        _buttonAcceptChooseAgree.onClick.AddListener(SoundManager.Instance.PlayButtonClickSound);
+        _buttonAcceptChooseAgree.onClick.AddListener(HidePanelAcceptChoose);
+        _panelAcceptChoose.SetActive(false);
     }
 
 

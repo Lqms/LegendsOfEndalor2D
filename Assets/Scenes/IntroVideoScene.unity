@@ -497,10 +497,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c62a9d32a1ca54fbe892d65c33ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelAcceptChoose: {fileID: 996377358}
-  textAcceptChoose: {fileID: 1246794036}
-  buttonAcceptChooseAgree: {fileID: 1025043387}
-  buttonAcceptChooseCancel: {fileID: 1307153551}
+  _panelAcceptChoose: {fileID: 996377358}
+  _textAcceptChoose: {fileID: 1246794036}
+  _buttonAcceptChooseAgree: {fileID: 1025043387}
+  _buttonAcceptChooseCancel: {fileID: 1307153551}
   panelSettings: {fileID: 0}
   sliderSettingsSound: {fileID: 0}
   portraitObjects: []
