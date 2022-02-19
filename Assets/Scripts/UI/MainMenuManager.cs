@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Background image")]
-    [SerializeField] Image imageBG;
+    [SerializeField] private Image _imageBackground;
 
     [Header("Text version")]
-    [SerializeField] Text textVersion;
+    [SerializeField] private Text _textVersion;
 
 
     // Buttons onclick
@@ -24,17 +24,23 @@ public class MainMenuManager : MonoBehaviour
         UIManager.Instance.ButtonAcceptChooseAgree.onClick.AddListener(NewGameAccept);
     }
 
-    void NewGameAccept()
+    private void NewGameAccept()
     {
         SoundManager.Instance.PlayNewGameSound();
-        imageBG.GetComponent<Animator>().SetTrigger("NewGame"); //Change scene on event in this anim
-        textVersion.text = "";
+        _imageBackground.GetComponent<Animator>().SetTrigger("NewGame");
+        _textVersion.text = "";
         gameObject.SetActive(false);
+        Invoke("StartNewGame", 3f);
+    }
+
+    private void StartNewGame()
+    {
+        SceneHelper.Instance.LoadSceneByName(SceneNames.CreateCharacterScene);
     }
 
     public void LoadGame()
     {
-        Debug.Log("There will be game loading...");
+        Debug.Log("There will be a game loading...");
     }
 
     public void Settings()
