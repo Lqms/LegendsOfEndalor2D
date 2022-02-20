@@ -5,35 +5,35 @@ using UnityEngine;
 public class MainCameraFollowPlayer : MonoBehaviour
 {
     [Header("Camera settings")]
-    [SerializeField] float maxZoomValue = 4;
-    [SerializeField] float minZoomValue = 2;
-    [SerializeField] PlayerManager target;
-    private Camera mainCamera;
-    private Vector3 offset;
-    private float zoomValue;
+    [SerializeField] private float _maxZoomValue = 4;
+    [SerializeField] private float _minZoomValue = 2;
+
+    private PlayerManager _target;
+    private Camera _mainCamera;
+    private Vector3 _offset;
+    private float _currentZoomValue;
 
     void Start()
     {
-        mainCamera = gameObject.GetComponent<Camera>();
-        Invoke("FindPlayer", 0.5f);
+        _mainCamera = gameObject.GetComponent<Camera>();
+        Invoke("FindPlayer", 0.1f);
     }
 
     void Update()
     {
         if (Input.mouseScrollDelta != Vector2.zero)
         {
-            print("Zoomed!");
-            zoomValue = Input.GetAxis("Mouse ScrollWheel");
-            if (zoomValue > 0 && mainCamera.orthographicSize > minZoomValue) mainCamera.orthographicSize -= 1;
-            else if (zoomValue < 0 && mainCamera.orthographicSize < maxZoomValue) mainCamera.orthographicSize += 1;
+            _currentZoomValue = Input.GetAxis("Mouse ScrollWheel");
+            if (_currentZoomValue > 0 && _mainCamera.orthographicSize > _minZoomValue) _mainCamera.orthographicSize -= 1;
+            else if (_currentZoomValue < 0 && _mainCamera.orthographicSize < _maxZoomValue) _mainCamera.orthographicSize += 1;
         }
 
-        if (target != null) transform.position = target.transform.position + offset;
+        if (_target != null) transform.position = _target.transform.position + _offset;
     }
     
     void FindPlayer()
     {
-        target = FindObjectOfType<PlayerManager>();
-        offset = transform.position - target.transform.position;
+        _target = FindObjectOfType<PlayerManager>();
+        _offset = transform.position - _target.transform.position;
     }
 }

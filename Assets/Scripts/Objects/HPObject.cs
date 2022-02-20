@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class HPObject : MonoBehaviour
 {
-    public float healthPoints = 100;
-    [SerializeField] AudioClip hitSound;
-    AudioSource audioSource;
+    public float HealthPoints = 100;
+    [SerializeField] private AudioClip _hitSound;
+    private AudioSource _audioSource;
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void GetDamage(float damage)
     {
-        healthPoints -= damage;
-        audioSource.PlayOneShot(hitSound);
+        HealthPoints -= damage;
+        _audioSource.PlayOneShot(_hitSound);
         StartCoroutine(GetDamageAnimationCoroutine());
-        if (healthPoints <= 0) Destroy(gameObject);
+        if (HealthPoints <= 0) Destroy(gameObject);
     }
 
     IEnumerator GetDamageAnimationCoroutine()
